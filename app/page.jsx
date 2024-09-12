@@ -21,7 +21,7 @@ export default function Home() {
         </h2>
       </div>
 
-      <form className="container mx-auto bg-[#0c1526] w-[35%] p-6 h-[72] rounded-md mt-5">
+      <form className="container mx-auto bg-[#0c1526] w-[35%] p-6 rounded-md mt-5">
         <section className="flex space-x-5 pb-4 text-[21px] justify-end text-white opacity-80">
           <FaWallet />
           <BiCommentDetail />
@@ -54,7 +54,7 @@ export default function Home() {
               <div className="flex space-x-2">
                 <select className="w-[70%] bg-[#14213d] cursor-pointer py-3 px-2 text-white opacity-80 outline-none border border-white border-opacity-10 rounded-md text-opacity-60">
                   <option value="">Destination</option>
-                  <option value="">Destinantion</option>
+                  <option value="">Destination</option>
                 </select>
                 <p className="flex items-center w-[30%] bg-[#14213d] border border-white border-opacity-10 py-3 px-2 rounded-md text-white opacity-60">
                   Asset
@@ -76,7 +76,7 @@ export default function Home() {
             />
           </div>
           <div className="flex flex-col space-y-1">
-            <label htmlFor="send to" className="text-sm text-white opacity-60">
+            <label htmlFor="sendTo" className="text-sm text-white opacity-60">
               Send To
             </label>
             <input
