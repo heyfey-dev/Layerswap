@@ -1,6 +1,6 @@
 import { BiCommentDetail } from "react-icons/bi";
 import { FaBars, FaWallet } from "react-icons/fa6";
-import { TfiExchangeVertical } from "react-icons/tfi";
+import { IoSwapVertical } from "react-icons/io5";
 import Image from "next/image";
 import layerswapLogo from "./public/layerswap_logo.png";
 import { Footer } from "./components/Footer";
@@ -14,41 +14,49 @@ export default function Home() {
           alt="layer"
           height={80}
           width={80}
-          className="h-20 w-20"
+          className="h-16 w-16"
         />
-        <h2 className="text-[#e5e7eb] font-medium tracking-wide text-2xl">Layerswap</h2>
+        <h2 className="text-[#e5e7eb] font-semibold tracking-wide text-2xl">
+          Layerswap
+        </h2>
       </div>
 
       <form className="container mx-auto bg-[#0c1526] w-[35%] p-6 h-[72] rounded-md mt-5">
-        <section className="flex space-x-5 py-2 text-2xl justify-end text-white">
+        <section className="flex space-x-5 pb-4 text-[21px] justify-end text-white opacity-80">
           <FaWallet />
           <BiCommentDetail />
           <FaBars />
         </section>
 
         <section>
-          <div className="flex flex-col">
-            <div className="bg-[#111c36] rounded-md p-4 space-y-4">
-              <p className="text-white opacity-60">From</p>
-              <div className="flex space-x-5">
-                <select className="w-[70%] bg-[#14213d] cursor-pointer py-3 px-2 text-white opacity-80 outline-none border-none rounded-md">
+          <div className="flex flex-col space-y-1 relative">
+            <div className="bg-[#111c36] rounded-md py-4 px-3 space-y-1">
+              <p className="text-sm text-white opacity-60">From</p>
+              <div className="flex space-x-2">
+                <select className="w-[70%] bg-[#14213d] border border-white border-opacity-10 cursor-pointer py-3 px-2 text-white opacity-80 outline-none rounded-md text-opacity-60">
                   <option value="">Source</option>
                   <option value="">Source</option>
                 </select>
-                <p className="flex items-center w-[30%] bg-[#14213d] py-3 px-2 rounded-md text-white opacity-80">
+                <p className="flex items-center w-[30%] bg-[#14213d] border border-white border-opacity-10 py-3 px-2 rounded-md text-white opacity-60">
                   Asset
                 </p>
               </div>
             </div>
-            <TfiExchangeVertical className="mx-auto text-white opacity-60 text-xl bg-[#111c36] rounded-full w-7 h-7 cursor-pointer" />
-            <div className="bg-[#111c36] rounded-md p-4 space-y-4">
-              <p className="text-white opacity-60">To</p>
-              <div className="flex space-x-5">
-                <select className="w-[70%] bg-[#14213d] cursor-pointer py-3 px-2 text-white opacity-80 outline-none border-none rounded-md">
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 border-white border border-opacity-20 rounded-full ">
+              <div className="bg-[#0c1526] rounded-full p-1">
+                <div className="border border-white border-opacity-[0px] rounded-full p-1">
+                  <IoSwapVertical className="text-white opacity-60 h-[15px] w-[15px] cursor-pointer" />
+                </div>
+              </div>
+            </div>
+            <div className="bg-[#111c36] rounded-md py-4 px-3 space-y-1">
+              <p className="text-sm text-white opacity-60">To</p>
+              <div className="flex space-x-2">
+                <select className="w-[70%] bg-[#14213d] cursor-pointer py-3 px-2 text-white opacity-80 outline-none border border-white border-opacity-10 rounded-md text-opacity-60">
                   <option value="">Destination</option>
-                  <option value="">Destination</option>
+                  <option value="">Destinantion</option>
                 </select>
-                <p className="flex items-center w-[30%] bg-[#14213d] py-3 px-2 rounded-md text-white opacity-80">
+                <p className="flex items-center w-[30%] bg-[#14213d] border border-white border-opacity-10 py-3 px-2 rounded-md text-white opacity-60">
                   Asset
                 </p>
               </div>
@@ -56,9 +64,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mt-5 space-y-4">
-          <div className="flex flex-col space-y-2">
-            <label htmlFor="amount" className="text-white opacity-60">
+        <section className="mt-5 space-y-3">
+          <div className="flex flex-col space-y-1">
+            <label htmlFor="amount" className="text-sm text-white opacity-60">
               Amount
             </label>
             <input
@@ -67,8 +75,8 @@ export default function Home() {
               className="bg-[#111c36] rounded-md w-full p-3"
             />
           </div>
-          <div className="flex flex-col space-y-2">
-            <label htmlFor="send to" className="text-white opacity-60">
+          <div className="flex flex-col space-y-1">
+            <label htmlFor="send to" className="text-sm text-white opacity-60">
               Send To
             </label>
             <input
@@ -88,7 +96,7 @@ export default function Home() {
           </div>
         </section>
 
-        <button className="bg-[#6e0040] w-full mt-6 p-3 text-white opacity-60 text-center rounded-md">
+        <button className="bg-[#6e0040] w-full mt-6 p-3 text-white text-opacity-50 font-semibold text-center rounded-md">
           Select source
         </button>
       </form>
