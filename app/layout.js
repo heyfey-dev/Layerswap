@@ -1,16 +1,8 @@
-import localFont from "next/font/local";
+import { Noto_Serif_Georgian } from 'next/font/google'
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+
+const serif = Noto_Serif_Georgian({ subsets: ['latin'], weight: '400' })
 
 export const metadata = {
   title: "Create Next App",
@@ -21,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={serif.className}
       >
         {children}
       </body>
