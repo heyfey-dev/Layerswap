@@ -7,7 +7,7 @@ import { Footer } from "./components/Footer";
 
 export default function Home() {
   return (
-    <main className="bg-gradient-to-l from-[#0c1526] via-[#2f1136] to-[#0c1526] h-[100%] w-full py-5">
+    <main className="font-sans bg-gradient-to-l from-[#0c1526] via-[#2f1136] to-[#0c1526] h-[100%] w-full py-5">
       <div className="flex justify-center items-center ">
         <Image
           src={layerswapLogo}
@@ -16,10 +16,10 @@ export default function Home() {
           width={80}
           className="h-20 w-20"
         />
-        <h2 className="text-white font-semibold tracking-wide text-2xl">Layerswap</h2>
+        <h2 className="text-[#e5e7eb] font-medium tracking-wide text-2xl">Layerswap</h2>
       </div>
 
-      <form className="container mx-auto bg-[#0c1526] w-[40%] p-6 h-[72] rounded-md">
+      <form className="container mx-auto bg-[#0c1526] w-[35%] p-6 h-[72] rounded-md mt-5">
         <section className="flex space-x-5 py-2 text-2xl justify-end text-white">
           <FaWallet />
           <BiCommentDetail />
