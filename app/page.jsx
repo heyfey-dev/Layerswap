@@ -1,28 +1,22 @@
 import { BiCommentDetail } from "react-icons/bi";
-import {
-  FaBars,
-  FaDiscord,
-  FaGithub,
-  FaWallet,
-  FaYoutube,
-} from "react-icons/fa6";
+import { FaBars, FaWallet } from "react-icons/fa6";
 import { TfiExchangeVertical } from "react-icons/tfi";
-import { BsTwitterX } from "react-icons/bs";
 import Image from "next/image";
 import layerswapLogo from "./public/layerswap_logo.png";
+import { Footer } from "./components/Footer";
 
 export default function Home() {
   return (
-    <main className="bg-gradient-to-l from-[#0c1526] via-[#2f1136] to-[#0c1526] h-[100%] w-full">
+    <main className="bg-gradient-to-l from-[#0c1526] via-[#2f1136] to-[#0c1526] h-[100%] w-full py-5">
       <div className="flex justify-center items-center ">
         <Image
           src={layerswapLogo}
           alt="layer"
           height={80}
           width={80}
-          className="h-32 w-32"
+          className="h-20 w-20"
         />
-        <h2 className="text-white tracking-wide text-3xl">Layerswap</h2>
+        <h2 className="text-white tracking-wide font-medium text-2xl">Layerswap</h2>
       </div>
 
       <form className="container mx-auto bg-[#0c1526] w-[40%] p-6 h-[72] rounded-md">
@@ -99,19 +93,7 @@ export default function Home() {
         </button>
       </form>
 
-      <footer>
-        <ul>
-          <li>Privacy Policy.</li>
-          <li>Terms of Services</li>
-        </ul>
-        <p>© 2024 Layerswap Labs, Inc. All rights reserved.</p>
-        <ul>
-          <BsTwitterX />
-          <FaDiscord />
-          <FaGithub />
-          <FaYoutube />
-        </ul>
-      </footer>
+      <Footer />
     </main>
   );
 }
