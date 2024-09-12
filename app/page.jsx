@@ -16,7 +16,7 @@ export default function Home() {
           width={80}
           className="h-20 w-20"
         />
-        <h2 className="text-white tracking-wide font-medium text-2xl">Layerswap</h2>
+        <h2 className="text-white font-semibold tracking-wide text-2xl">Layerswap</h2>
       </div>
 
       <form className="container mx-auto bg-[#0c1526] w-[40%] p-6 h-[72] rounded-md">

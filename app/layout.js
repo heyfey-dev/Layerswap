@@ -1,8 +1,8 @@
-import { Noto_Serif_Georgian } from 'next/font/google'
+import { PT_Serif } from 'next/font/google'
 import "./globals.css";
 
 
-const serif = Noto_Serif_Georgian({ subsets: ['latin'], weight: '400' })
+const pt_serif = PT_Serif({ subsets: ['latin'], weight: '400' })
 
 export const metadata = {
   title: "Create Next App",
@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={serif.className}
+        className={pt_serif.className}
       >
         {children}
       </body>
