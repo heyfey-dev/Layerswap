@@ -1,14 +1,21 @@
 import Logo from "./components/Logo";
 import { BiCommentDetail } from "react-icons/bi";
-import { FaBars, FaWallet } from "react-icons/fa6";
+import {
+  FaBars,
+  FaDiscord,
+  FaGithub,
+  FaWallet,
+  FaYoutube,
+} from "react-icons/fa6";
 import { TfiExchangeVertical } from "react-icons/tfi";
+import { BsTwitterX } from "react-icons/bs";
 
 export default function Home() {
   return (
     <main className="bg-gradient-to-l from-[#0c1526] via-[#2f1136] to-[#0c1526] h-screen w-full">
-      <div>
+      <div className="flex flex-col justify-center">
         <Logo />
-        <h2>Layerswap</h2>
+        <h2 className="text-white font-semibold text-xl">Layerswap</h2>
       </div>
 
       <div className="container mx-auto bg-[#0c1526] w-[40%] h-72 ">
@@ -61,8 +68,17 @@ export default function Home() {
       </div>
 
       <footer>
-        <p>Privacy Policy.</p>
-        <p>Terms of Services</p>
+        <ul>
+          <li>Privacy Policy.</li>
+          <li>Terms of Services</li>
+        </ul>
+        <p>© 2024 Layerswap Labs, Inc. All rights reserved.</p>
+        <ul>
+          <BsTwitterX />
+          <FaDiscord />
+          <FaGithub />
+          <FaYoutube />
+        </ul>
       </footer>
     </main>
   );
