@@ -5,7 +5,7 @@ import { IoSwapVertical } from "react-icons/io5";
 
 export default function Home() {
   return (
-    <main className="font-sans bg-gradient-to-l from-[#0c1526] via-[#2f1136] to-[#0c1526] h-[100vh] w-full py-5">
+    <main className="font-sans bg-[#0b1124] h-[100vh] w-full">
       <Navbar />
 
       <div>
