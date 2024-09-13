@@ -24,7 +24,7 @@ export default function Home() {
           <p className="text-[#9ba5bf] font-semibold text-xl tracking-wide">
             Freedom to move crypto anywhere
           </p>
-          <Link href={""} className="flex items-center space-x-4">
+          <Link href={'/subpage'} className="flex items-center space-x-4">
             <span className="flex items-center p-[10px] rounded-lg bg-[#e32474] space-x-4">
               <button className="font-semibold">Lanuch App </button>
               <FaChevronRight />
