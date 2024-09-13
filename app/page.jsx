@@ -33,11 +33,11 @@ export default function Home() {
             <div className="bg-[#111c36] rounded-md py-4 px-3 space-y-1">
               <p className="text-sm text-white opacity-60">From</p>
               <div className="flex space-x-2">
-                <select className="w-[70%] bg-[#14213d] border border-white border-opacity-10 cursor-pointer py-3 px-2 text-white opacity-80 outline-none rounded-md text-opacity-60">
+                <select className="w-[70%] bg-[#14213d] border border-white border-opacity-5 cursor-pointer py-3 px-2 text-white opacity-80 outline-none rounded-md text-opacity-60">
                   <option value="">Source</option>
                   <option value="">Source</option>
                 </select>
-                <p className="flex items-center w-[30%] bg-[#14213d] border border-white border-opacity-10 py-3 px-2 rounded-md text-white opacity-60">
+                <p className="flex items-center w-[30%] bg-[#14213d] border-white border border-opacity-5 py-3 px-2 rounded-md text-white opacity-60">
                   Asset
                 </p>
               </div>
@@ -52,11 +52,11 @@ export default function Home() {
             <div className="bg-[#111c36] rounded-md py-4 px-3 space-y-1">
               <p className="text-sm text-white opacity-60">To</p>
               <div className="flex space-x-2">
-                <select className="w-[70%] bg-[#14213d] cursor-pointer py-3 px-2 text-white opacity-80 outline-none border border-white border-opacity-10 rounded-md text-opacity-60">
+                <select className="w-[70%] bg-[#14213d] cursor-pointer py-3 px-2 text-white opacity-80 outline-none border border-white border-opacity-5 rounded-md text-opacity-60">
                   <option value="">Destination</option>
                   <option value="">Destination</option>
                 </select>
-                <p className="flex items-center w-[30%] bg-[#14213d] border border-white border-opacity-10 py-3 px-2 rounded-md text-white opacity-60">
+                <p className="flex items-center w-[30%] bg-[#14213d] border-white border border-opacity-5 py-3 px-2 rounded-md text-white opacity-60">
                   Asset
                 </p>
               </div>
