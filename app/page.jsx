@@ -33,7 +33,7 @@ export default function Home() {
           </Link>
         </section>
 
-        <form className="container mx-auto bg-[#0c1526] w-full max-w-xs sm:max-w-sm md:max-w-md p-6 rounded-xl mt-12 md:mt-10 border border-white border-opacity-10 md:hover:translate-y-[-25px] transform transition duration-700 ease-in-out cursor-pointer">
+        <form className="container mx-auto bg-[#0c1526] w-full max-w-xs sm:max-w-sm md:max-w-md p-6 rounded-xl mt-[72px] md:mt-10 border border-white border-opacity-10 md:hover:translate-y-[-25px] transform transition duration-700 ease-in-out cursor-pointer">
           <section>
             <div className="flex flex-col space-y-7 relative">
               <div className="bg-[#111c36] rounded-md py-4 px-3 space-y-1">
@@ -57,7 +57,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="bg-[#111c36] rounded-md py-4 px-3 space-y-1 md:transition-transform duration-300 ease-in-out">
+              <div className="bg-[#111c36] rounded-md py-4 px-3 space-y-1 md:transition-transform duration-300 ease-in-out opacity-50">
                 <p className="text-base text-white opacity-60">To</p>
                 <div className="flex justify-between space-x-2 w-full bg-[#14213d] border border-white border-opacity-5 cursor-pointer py-3 px-2 text-white opacity-80 outline-none rounded-md text-opacity-60">
                   <input
