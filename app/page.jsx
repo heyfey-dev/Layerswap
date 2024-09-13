@@ -38,7 +38,7 @@ export default function Home() {
             <div className="flex flex-col space-y-7 relative">
               <div className="bg-[#111c36] rounded-md py-4 px-3 space-y-1">
                 <p className="text-base text-white opacity-60">From</p>
-                <div className="flex justify-between space-x-2 w-[100%] bg-[#14213d] border border-white border-opacity-5 cursor-pointer py-3 px-2 text-white opacity-80 outline-none rounded-md text-opacity-60">
+                <Link href={'/subpage'} className="flex justify-between space-x-2 w-[100%] bg-[#14213d] border border-white border-opacity-5 cursor-pointer py-3 px-2 text-white opacity-80 outline-none rounded-md text-opacity-60">
                   <input
                     type="text"
                     placeholder="Loopring"
@@ -46,7 +46,7 @@ export default function Home() {
                     className="bg-transparent"
                   />
                   <FaChevronDown />
-                </div>
+                </Link>
               </div>
 
               <div className="absolute left-1/2 top-[39%] transform -translate-x-1/2 -translate-y-1/2 border-white border border-opacity-20 rounded-full">
