@@ -1,7 +1,6 @@
 import { FaArrowRight, FaChevronDown, FaChevronRight } from "react-icons/fa6";
 import { Navbar } from "./components/Navbar";
 import { IoSwapVertical } from "react-icons/io5";
-import { MdOutlineHorizontalRule } from "react-icons/md";
 import { LandingPageFooter } from "./components/LandingPageFooter";
 import Link from "next/link";
 
@@ -30,7 +29,9 @@ export default function Home() {
               href={"/subpage"}
               className="flex items-center justify-center p-[10px] rounded-xl bg-[#e32474] space-x-3 group h-10"
             >
-              <span className="font-semibold text-sm md:text-base">Launch App</span>
+              <span className="font-semibold text-sm md:text-base">
+                Launch App
+              </span>
               <div className="w-4 h-4 relative overflow-hidden flex items-center">
                 <FaChevronRight className="text-sm absolute transition-transform duration-700 ease-in-out group-hover:translate-x-6 group-hover:opacity-0" />
                 <FaArrowRight className="text-sm absolute transition-transform duration-700 ease-in-out translate-x-[-100%] group-hover:translate-x-0 group-hover:opacity-100 opacity-0" />
@@ -45,9 +46,12 @@ export default function Home() {
         <form className="container mx-auto bg-[#0c1526] w-full max-w-xs sm:max-w-sm md:max-w-md p-6 rounded-xl mt-[72px] md:mt-10 border border-white border-opacity-10 md:hover:translate-y-[-25px] transform transition duration-700 ease-in-out cursor-pointer">
           <section>
             <div className="flex flex-col space-y-7 relative">
-              <div className="bg-[#111c36] rounded-md py-4 px-3 space-y-1">
+              <Link
+                href={"/subpage"}
+                className="bg-[#111c36] rounded-md py-4 px-3 space-y-1"
+              >
                 <p className="text-base text-white opacity-60">From</p>
-                <Link
+                <div
                   href={"/subpage"}
                   className="flex justify-between space-x-2 w-full bg-[#14213d] border border-white border-opacity-5 cursor-pointer py-3 px-2 text-white opacity-80 outline-none rounded-md text-opacity-60"
                 >
@@ -58,8 +62,8 @@ export default function Home() {
                     className="bg-transparent w-full"
                   />
                   <FaChevronDown className="flex-shrink-0" />
-                </Link>
-              </div>
+                </div>
+              </Link>
 
               <div className="absolute left-1/2 top-[39%] transform -translate-x-1/2 -translate-y-1/2 border-white border border-opacity-20 rounded-full">
                 <div className="bg-[#0c1526] rounded-full p-1">
