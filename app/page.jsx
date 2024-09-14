@@ -28,12 +28,12 @@ export default function Home() {
           <div className="flex items-center space-x-4 text-[14px] md:text-base">
             <Link
               href={"/subpage"}
-              className="flex items-center p-[10px] rounded-xl bg-[#e32474] space-x-3 group"
+              className="flex items-center justify-center p-[10px] rounded-xl bg-[#e32474] space-x-3 group h-10"
             >
-              <span className="font-semibold">Launch App</span>
-              <div className="w-4 h-4 relative overflow-hidden">
-                <FaChevronRight className="text-sm md:text-[15px] absolute transition-transform duration-700 ease-in-out group-hover:translate-x-6 group-hover:opacity-0" />
-                <FaArrowRight className="text-sm md:text-[16px] absolute transition-transform duration-700 ease-in-out translate-x-[-100%] group-hover:translate-x-0 group-hover:opacity-100 opacity-0" />
+              <span className="font-semibold text-sm md:text-base">Launch App</span>
+              <div className="w-4 h-4 relative overflow-hidden flex items-center">
+                <FaChevronRight className="text-sm absolute transition-transform duration-700 ease-in-out group-hover:translate-x-6 group-hover:opacity-0" />
+                <FaArrowRight className="text-sm absolute transition-transform duration-700 ease-in-out translate-x-[-100%] group-hover:translate-x-0 group-hover:opacity-100 opacity-0" />
               </div>
             </Link>
             <Link href={"/learn-more"} className="font-semibold">
