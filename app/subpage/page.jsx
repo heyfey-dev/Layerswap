@@ -1,11 +1,34 @@
+"use client";
+
 import { BiCommentDetail } from "react-icons/bi";
 import { FaBars, FaWallet } from "react-icons/fa6";
 import { IoSwapVertical } from "react-icons/io5";
 import Image from "next/image";
 import layerswapLogo from "../public/layerswap_logo.png";
 import { Footer } from "../components/Footer";
+import { useState } from "react";
+import { fetchTokenInfo } from "../api/tokens";
+import { topTokens } from "../constants/tokens";
 
 export default function LayerswapAppPage() {
+  const [selectedOption, setSelectedOption] = useState("");
+  // useEffect(() => {
+  //   const fetchTokens = async () => {
+  //     const response = await fetchTopTokens();
+  //     console.log(response.status);
+  //     console.log(response.data);
+  //   };
+
+  //   fetchTokens();
+  // }, []);
+
+  const onDropDownChanged = async (value) => {
+    setSelectedOption(value);
+    const response = await fetchTokenInfo(value);
+    console.log(response.data);
+    console.log(response.status);
+  };
+
   return (
     <main className="font-sans bg-[#0c1526] md:bg-gradient-to-l from-[#0c1526] via-[#2f1136] to-[#0c1526] h-[100%] md:h-[100%] w-full py-5">
       {/* web and mobile view merged */}
@@ -19,7 +42,7 @@ export default function LayerswapAppPage() {
             className="h-[50px] w-[50px] md:h-16 md:w-16"
           />
           <h2 className="text-[#e5e7eb] font-semibold tracking-wide text-lg md:text-2xl">
-            Layerswap
+            Layerswap cbcbcb
           </h2>
         </div>
         <div className="md:hidden relative left-[70px] flex space-x-5 text-[19px] text-white opacity-80">
@@ -40,9 +63,17 @@ export default function LayerswapAppPage() {
             <div className="bg-[#111c36] rounded-md py-4 px-5 md:px-3 space-y-1">
               <p className="text-xs md:text-sm text-white opacity-60">From</p>
               <div className="flex space-x-2">
-                <select className="w-[75%] md:w-[70%] bg-[#14213d] border border-white border-opacity-5 cursor-pointer py-3 px-2 text-white opacity-80 outline-none rounded-md text-opacity-60 text-sm md:text-base">
-                  <option value="">Source</option>
-                  <option value="">Source</option>
+                <select
+                  value={selectedOption}
+                  onChange={(e) => onDropDownChanged(e.target.value)}
+                  className="w-[75%] md:w-[70%] bg-[#14213d] border border-white border-opacity-5 cursor-pointer py-3 px-2 text-white opacity-80 outline-none rounded-md text-opacity-60 text-sm md:text-base"
+                >
+                  <option value=""></option>
+                  {topTokens.map((token) => (
+                    <option key={token.address} value={token.address}>
+                      {token.token}
+                    </option>
+                  ))}
                 </select>
                 <p className="flex items-center w-[30%] bg-[#14213d] border-white border border-opacity-5 py-3 px-2 rounded-md text-white text-sm md:text-base opacity-60">
                   Asset
@@ -57,13 +88,16 @@ export default function LayerswapAppPage() {
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-[#111c36] rounded-md py-4 px-5 md:px-3 space-y-1">
               <p className="text-xs md:text-sm text-white opacity-60">To</p>
               <div className="flex space-x-2">
                 <select className="w-[75%] md:w-[70%] bg-[#14213d] cursor-pointer py-3 px-2 text-white opacity-80 outline-none border border-white border-opacity-5 rounded-md text-opacity-60 text-sm md:text-base">
-                  <option value="">Destination</option>
-                  <option value="">Destination</option>
+                  {topTokens.map((token) => (
+                    <option key={token.address} value={token.address}>
+                      {token.token}
+                    </option>
+                  ))}
                 </select>
                 <p className="flex items-center w-[30%] bg-[#14213d] border-white border border-opacity-5 py-3 px-2 rounded-md text-white text-sm md:text-base opacity-60">
                   Asset
@@ -75,7 +109,10 @@ export default function LayerswapAppPage() {
 
         <section className="mt-5 space-y-3">
           <div className="flex flex-col space-y-1">
-            <label htmlFor="amount" className="text-[13px] md:text-sm text-white opacity-60">
+            <label
+              htmlFor="amount"
+              className="text-[13px] md:text-sm text-white opacity-60"
+            >
               Amount
             </label>
             <input
@@ -85,7 +122,10 @@ export default function LayerswapAppPage() {
             />
           </div>
           <div className="flex flex-col space-y-1">
-            <label htmlFor="sendTo" className="text-[13px] md:text-sm text-white opacity-60">
+            <label
+              htmlFor="sendTo"
+              className="text-[13px] md:text-sm text-white opacity-60"
+            >
               Send To
             </label>
             <input
