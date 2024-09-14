@@ -3,32 +3,31 @@
 @tailwind utilities;
 
 @keyframes slide-up {
-    0% {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
   }
-  
-  @keyframes slide-down {
-    0% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(100%);
-      opacity: 0;
-    }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  .popup-enter {
-    animation: slide-up 0.6s ease-out forwards;
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  .popup-exit {
-    animation: slide-down 0.6s ease-out forwards;
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
   }
-  
+}
+
+.popup-enter {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+.popup-exit {
+  animation: slide-down 0.6s ease-out forwards;
+}
