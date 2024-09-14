@@ -1,6 +1,7 @@
-import { FaChevronDown, FaChevronRight } from "react-icons/fa6";
+import { FaArrowRight, FaChevronDown, FaChevronRight } from "react-icons/fa6";
 import { Navbar } from "./components/Navbar";
 import { IoSwapVertical } from "react-icons/io5";
+import { MdOutlineHorizontalRule } from "react-icons/md";
 import { LandingPageFooter } from "./components/LandingPageFooter";
 import Link from "next/link";
 
@@ -11,7 +12,7 @@ export default function Home() {
 
       <div className="mt-10 md:mt-16">
         <section className="flex flex-col ml-5 md:ml-0 items-start md:items-center text-white space-y-3">
-          <h1 className="text-3xl md:text-6xl font-bold flex flex-wrap justify-start md:justify-center max-w-[600px] mx-auto tracking-normal md:tracking-wide">
+          <h1 className="text-3xl md:text-[58px] md:leading-[55px] text-[#e8e8e8] font-bold flex flex-wrap justify-start md:justify-center max-w-[600px] mx-auto tracking-normal md:tracking-wide">
             <span className="underline decoration-2 md:decoration-4 decoration-[#e32474] underline-offset-2 mr-2">
               Fast
             </span>
@@ -24,13 +25,21 @@ export default function Home() {
           <p className="text-[#9ba5bf] font-semibold text-base md:text-xl tracking-wide">
             Freedom to move crypto anywhere
           </p>
-          <Link href={'/subpage'} className="flex items-center space-x-4 text-[15px] md:text-base">
-            <span className="flex items-center p-[10px] rounded-xl bg-[#e32474] space-x-4">
-              <button className="font-semibold">Lanuch App </button>
-              <FaChevronRight />
-            </span>
-            <p className="font-semibold">Learn more</p>
-          </Link>
+          <div className="flex items-center space-x-4 text-[14px] md:text-base">
+            <Link
+              href={"/subpage"}
+              className="flex items-center p-[10px] rounded-xl bg-[#e32474] space-x-3 group"
+            >
+              <span className="font-semibold">Launch App</span>
+              <div className="w-4 h-4 relative overflow-hidden">
+                <FaChevronRight className="text-sm md:text-[15px] absolute transition-transform duration-700 ease-in-out group-hover:translate-x-6 group-hover:opacity-0" />
+                <FaArrowRight className="text-sm md:text-[16px] absolute transition-transform duration-700 ease-in-out translate-x-[-100%] group-hover:translate-x-0 group-hover:opacity-100 opacity-0" />
+              </div>
+            </Link>
+            <Link href={"/learn-more"} className="font-semibold">
+              Learn more
+            </Link>
+          </div>
         </section>
 
         <form className="container mx-auto bg-[#0c1526] w-full max-w-xs sm:max-w-sm md:max-w-md p-6 rounded-xl mt-[72px] md:mt-10 border border-white border-opacity-10 md:hover:translate-y-[-25px] transform transition duration-700 ease-in-out cursor-pointer">
@@ -38,7 +47,10 @@ export default function Home() {
             <div className="flex flex-col space-y-7 relative">
               <div className="bg-[#111c36] rounded-md py-4 px-3 space-y-1">
                 <p className="text-base text-white opacity-60">From</p>
-                <Link href={'/subpage'} className="flex justify-between space-x-2 w-full bg-[#14213d] border border-white border-opacity-5 cursor-pointer py-3 px-2 text-white opacity-80 outline-none rounded-md text-opacity-60">
+                <Link
+                  href={"/subpage"}
+                  className="flex justify-between space-x-2 w-full bg-[#14213d] border border-white border-opacity-5 cursor-pointer py-3 px-2 text-white opacity-80 outline-none rounded-md text-opacity-60"
+                >
                   <input
                     type="text"
                     placeholder="Loopring"
