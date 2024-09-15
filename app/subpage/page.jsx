@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { BiCommentDetail } from "react-icons/bi";
 import { FaBars, FaChevronDown, FaWallet } from "react-icons/fa6";
 import { IoSwapVertical } from "react-icons/io5";
@@ -22,6 +22,7 @@ const LayerswapAppContent = () => {
 
   const [isModalOpen, setModalOpen] = useState(false);
 
+  // Toggles the token search popups
   const toggleFromSearch = () => setIsFromSearchOpen(true);
   const toggleToSearch = () => setIsToSearchOpen(true);
 
@@ -51,9 +52,15 @@ const LayerswapAppContent = () => {
         <form className="md:bg-[#0c1526] w-full h-full p-6 rounded-md mt-5">
           {/* Desktop navigation */}
           <section className="hidden md:flex space-x-5 pb-4 text-[21px] justify-end text-white opacity-80">
-            <button type="button"><FaWallet /></button>
-            <button type="button"><BiCommentDetail /></button>
-            <button type="button" onClick={() => setModalOpen(true)}><FaBars /></button>
+            <button type="button">
+              <FaWallet />
+            </button>
+            <button type="button">
+              <BiCommentDetail />
+            </button>
+            <button type="button" onClick={() => setModalOpen(true)}>
+              <FaBars />
+            </button>
           </section>
 
           <section>
@@ -68,7 +75,9 @@ const LayerswapAppContent = () => {
                       onClick={toggleFromSearch}
                     >
                       <span className="text-sm md:text-base">
-                        {selectedFromToken ? selectedFromToken.token : "Select Token"}
+                        {selectedFromToken
+                          ? selectedFromToken.token
+                          : "Select Token"}
                       </span>
                       <FaChevronDown className="text-[15px]" />
                     </div>
@@ -98,7 +107,9 @@ const LayerswapAppContent = () => {
                       onClick={toggleToSearch}
                     >
                       <span className="text-sm md:text-base">
-                        {selectedToToken ? selectedToToken.token : "Select Token"}
+                        {selectedToToken
+                          ? selectedToToken.token
+                          : "Select Token"}
                       </span>
                       <FaChevronDown className="text-[15px]" />
                     </div>
@@ -114,19 +125,44 @@ const LayerswapAppContent = () => {
           {/* Amount and Send To sections */}
           <section className="mt-5 space-y-3">
             <div className="flex flex-col space-y-1">
-              <label htmlFor="amount" className="text-[13px] md:text-sm text-white opacity-60">Amount</label>
-              <input type="text" placeholder="0.0" className="bg-[#111c36] rounded-md w-full p-3 placeholder:text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#e32474]" />
+              <label
+                htmlFor="amount"
+                className="text-[13px] md:text-sm text-white opacity-60"
+              >
+                Amount
+              </label>
+              <input
+                type="text"
+                placeholder="0.0"
+                className="bg-[#111c36] rounded-md w-full p-3 placeholder:text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#e32474]"
+              />
             </div>
             <div className="flex flex-col space-y-1">
-              <label htmlFor="sendTo" className="text-[13px] md:text-sm text-white opacity-60">Send To</label>
-              <input type="text" placeholder="Address" className="bg-[#111c36] rounded-md w-full p-3 placeholder:text-sm" disabled />
+              <label
+                htmlFor="sendTo"
+                className="text-[13px] md:text-sm text-white opacity-60"
+              >
+                Send To
+              </label>
+              <input
+                type="text"
+                placeholder="Address"
+                className="bg-[#111c36] rounded-md w-full p-3 placeholder:text-sm"
+                disabled
+              />
             </div>
             <div className="flex justify-between items-center bg-[#111c36] rounded-md w-full p-3">
-              <input type="text" placeholder="You will receive" className="text-sm md:text-base border-none outline-none bg-transparent placeholder:text-white" disabled />
+              <input
+                type="text"
+                placeholder="You will receive"
+                className="text-sm md:text-base border-none outline-none bg-transparent placeholder:text-white"
+                disabled
+              />
               <p className="text-white text-2xl">-</p>
             </div>
           </section>
 
+          {/* Button to trigger token search */}
           <button
             type="button"
             className="bg-[#6e0040] w-full mt-20 md:mt-6 p-[14px] text-white text-sm md:text-base text-opacity-50 font-semibold text-center rounded-md"
@@ -136,6 +172,7 @@ const LayerswapAppContent = () => {
           </button>
         </form>
 
+        {/* Token Search Popups */}
         <TokenSearchPopup
           isFromToken={true}
           topTokens={topTokens}
@@ -152,7 +189,12 @@ const LayerswapAppContent = () => {
       </div>
 
       <Footer />
-      {isModalOpen && <NavbarPopupModalPage isOpen={isModalOpen} onClose={() => setModalOpen(false)} />}
+      {isModalOpen && (
+        <NavbarPopupModalPage
+          isOpen={isModalOpen}
+          onClose={() => setModalOpen(false)}
+        />
+      )}
     </main>
   );
 };

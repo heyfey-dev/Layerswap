@@ -11,6 +11,7 @@ export const TokenSearchPopup = ({
   networkTokens,
   exchangeTokens,
 }) => {
+  // Destructure necessary values from the TokenContext for managing search states and input values
   const {
     isFromSearchOpen,
     isToSearchOpen,
@@ -22,13 +23,17 @@ export const TokenSearchPopup = ({
     setToSearchTerm,
   } = useTokenContext();
 
+  // Determine whether the search is for the "from" or "to" tokens and set the relevant states/terms accordingly
   const isSearchOpen = isFromToken ? isFromSearchOpen : isToSearchOpen;
   const searchTerm = isFromToken ? fromSearchTerm : toSearchTerm;
   const setSearchTerm = isFromToken ? setFromSearchTerm : setToSearchTerm;
+
+  // Toggle the search popup open/close based on whether it's for the "from" or "to" token
   const toggleSearch = isFromToken
     ? () => setIsFromSearchOpen(!isFromSearchOpen)
     : () => setIsToSearchOpen(!isToSearchOpen);
 
+  // Filter tokens based on search term entered
   const filteredTokens = [
     ...topTokens,
     ...networkTokens,
@@ -38,6 +43,7 @@ export const TokenSearchPopup = ({
   );
 
   return (
+    //  Only render the search popup if it is open
     isSearchOpen && (
       <div
         className={`absolute inset-0 bg-[#14213d] border-t border-white border-opacity-5 rounded-md shadow-lg overflow-hidden transition-all duration-500 ease-out ${
@@ -53,6 +59,7 @@ export const TokenSearchPopup = ({
               <LiaTimesSolid />
             </button>
           </div>
+          {/* Input field for search tokens */}
           <input
             type="text"
             placeholder={isFromToken ? "Swap from" : "Swap to"}
@@ -61,6 +68,7 @@ export const TokenSearchPopup = ({
             className="w-full bg-transparent border-b border-white border-opacity-20 p-3 text-white placeholder-white placeholder-opacity-60 focus:outline-none mb-4"
           />
           <div className="flex-grow overflow-y-auto">
+            {/* If there's a search term, show filtered results: otherwise, show categorized token lists */}
             {searchTerm ? (
               <TokenGroup
                 tokens={filteredTokens}
@@ -69,6 +77,7 @@ export const TokenSearchPopup = ({
               />
             ) : (
               <>
+                {/* Display groups of tokens: Popular, Networks, Exchanges */}
                 <TokenGroup
                   tokens={topTokens}
                   label="Popular"
