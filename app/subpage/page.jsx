@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BiCommentDetail } from "react-icons/bi";
 import { FaBars, FaChevronDown, FaWallet } from "react-icons/fa6";
 import { IoSwapVertical } from "react-icons/io5";
@@ -11,6 +11,7 @@ import { exchangeTokens, networkTokens, topTokens } from "../constants/tokens";
 import { TokenSearchPopup } from "../components/TokenSearchPopup";
 import NavbarPopupModalPage from "../components/NavbarPopupModal";
 import { TokenProvider, useTokenContext } from "../context/TokenContext";
+import { fetchTokenInfo } from "../api/tokens";
 
 const LayerswapAppContent = () => {
   const {
@@ -21,10 +22,32 @@ const LayerswapAppContent = () => {
   } = useTokenContext();
 
   const [isModalOpen, setModalOpen] = useState(false);
+  const [fromTokenInfo, setFromTokenInfo] = useState(null);
+  const [toTokenInfo, setToTokenInfo] = useState(null);
 
-  // Toggles the token search popups
   const toggleFromSearch = () => setIsFromSearchOpen(true);
   const toggleToSearch = () => setIsToSearchOpen(true);
+
+  useEffect(() => {
+    // Fetch token information based on selected tokens
+    const fetchToken = async (token, setter) => {
+      if (token) {
+        try {
+          const response = await fetchTokenInfo(token.address);
+          if (response.status === 200) {
+            setter(response.data);
+          }
+        } catch (error) {
+          console.error(`Error fetching token info for ${token.token}:`, error);
+        }
+      }
+    };
+
+    // Fetch data for selected "From" token
+    fetchToken(selectedFromToken, setFromTokenInfo);
+    // Fetch data for selected "o" token
+    fetchToken(selectedToToken, setToTokenInfo);
+  }, [selectedFromToken, selectedToToken]);
 
   return (
     <main className="font-sans bg-[#0c1526] md:bg-gradient-to-l from-[#0c1526] via-[#2f1136] to-[#0c1526] h-[100%] md:h-[100%] w-full py-5">
@@ -83,7 +106,7 @@ const LayerswapAppContent = () => {
                     </div>
                   </div>
                   <p className="flex items-center w-[30%] bg-[#14213d] border-white border border-opacity-5 py-3 px-2 rounded-md text-white text-sm md:text-base opacity-60">
-                    {selectedFromToken ? selectedFromToken.token : "Asset"}
+                    {fromTokenInfo ? fromTokenInfo.symbol : "Asset"}
                   </p>
                 </div>
               </div>
@@ -115,7 +138,7 @@ const LayerswapAppContent = () => {
                     </div>
                   </div>
                   <p className="flex items-center w-[30%] bg-[#14213d] border-white border border-opacity-5 py-3 px-2 rounded-md text-white text-sm md:text-base opacity-60">
-                    {selectedToToken ? selectedToToken.token : "Asset"}
+                    {toTokenInfo ? toTokenInfo.symbol : "Asset"}
                   </p>
                 </div>
               </div>
@@ -162,7 +185,7 @@ const LayerswapAppContent = () => {
             </div>
           </section>
 
-          {/* Button to trigger token search */}
+          {/* Button to select source token */}
           <button
             type="button"
             className="bg-[#6e0040] w-full mt-20 md:mt-6 p-[14px] text-white text-sm md:text-base text-opacity-50 font-semibold text-center rounded-md"
@@ -172,7 +195,7 @@ const LayerswapAppContent = () => {
           </button>
         </form>
 
-        {/* Token Search Popups */}
+        {/* Popups for token search */}
         <TokenSearchPopup
           isFromToken={true}
           topTokens={topTokens}
