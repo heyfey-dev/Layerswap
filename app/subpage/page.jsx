@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { BiCommentDetail } from "react-icons/bi";
 import { FaBars, FaChevronDown, FaWallet } from "react-icons/fa6";
 import { IoSwapVertical } from "react-icons/io5";
@@ -9,7 +9,7 @@ import layerswapLogo from "../public/layerswap_logo.png";
 import { Footer } from "../components/Footer";
 import { exchangeTokens, networkTokens, topTokens } from "../constants/tokens";
 import { TokenSearchPopup } from "../components/TokenSearchPopup";
-import NavbarPopupModalPage from "../components/NavbarPopupModal";
+import NavbarModal from "../components/NavbarModal";
 import { TokenProvider, useTokenContext } from "../context/TokenContext";
 import { fetchTokenInfo } from "../api/tokens";
 
@@ -24,6 +24,20 @@ const LayerswapAppContent = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [fromTokenInfo, setFromTokenInfo] = useState(null);
   const [toTokenInfo, setToTokenInfo] = useState(null);
+  const [formHeight, setFormHeight] = useState(0);
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    if (formRef.current) {
+      setFormHeight(formRef.current.offsetHeight);
+    }
+  }, []);
+
+  // Function to close the modal
+  const onClose = () => setModalOpen(false);
+
+  // Function to open the modal
+  const onOpen = () => setModalOpen(true);
 
   const toggleFromSearch = () => setIsFromSearchOpen(true);
   const toggleToSearch = () => setIsToSearchOpen(true);
@@ -50,7 +64,7 @@ const LayerswapAppContent = () => {
   }, [selectedFromToken, selectedToToken]);
 
   return (
-    <main className="font-sans bg-[#0c1526] md:bg-gradient-to-l from-[#0c1526] via-[#2f1136] to-[#0c1526] h-[100%] md:h-[100%] w-full py-5">
+    <main className="font-sans bg-[#0c1526] md:bg-gradient-to-l from-[#0c1526] via-[#2f1136] to-[#0c1526] min-h-screen w-full py-5">
       {/* Header */}
       <div className="flex justify-center items-center">
         <div className="flex items-center">
@@ -70,9 +84,11 @@ const LayerswapAppContent = () => {
           <FaBars />
         </div>
       </div>
-
       <div className="container mx-auto md:w-[35%] relative">
-        <form className="md:bg-[#0c1526] w-full h-full p-6 rounded-md mt-5">
+        <form
+          ref={formRef}
+          className="md:bg-[#0c1526] w-full p-6 rounded-md mt-5"
+        >
           {/* Desktop navigation */}
           <section className="hidden md:flex space-x-5 pb-4 text-[21px] justify-end text-white opacity-80">
             <button type="button">
@@ -212,12 +228,13 @@ const LayerswapAppContent = () => {
       </div>
 
       <Footer />
-      {isModalOpen && (
-        <NavbarPopupModalPage
-          isOpen={isModalOpen}
-          onClose={() => setModalOpen(false)}
-        />
-      )}
+      
+      {/* Button to open the modal */}
+      <NavbarModal
+        isOpen={isModalOpen}
+        onClose={onClose}
+        formHeight={formHeight}
+      />
     </main>
   );
 };
