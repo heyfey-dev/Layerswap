@@ -1,18 +1,42 @@
-import Image from "next/image";
+"use client";
+
+import React from "react";
 import { LiaTimesSolid } from "react-icons/lia";
+import { useTokenContext } from "../context/TokenContext";
+import { TokenGroup } from "./TokenGroup";
 
 export const TokenSearchPopup = ({
-  isSearchOpen,
-  toggleSearch,
-  searchTerm,
-  setSearchTerm,
-  filteredTokens,
-  onDropDownChanged,
-  renderTokenGroup,
+  isFromToken,
   topTokens,
   networkTokens,
   exchangeTokens,
 }) => {
+  const {
+    isFromSearchOpen,
+    isToSearchOpen,
+    setIsFromSearchOpen,
+    setIsToSearchOpen,
+    fromSearchTerm,
+    toSearchTerm,
+    setFromSearchTerm,
+    setToSearchTerm,
+  } = useTokenContext();
+
+  const isSearchOpen = isFromToken ? isFromSearchOpen : isToSearchOpen;
+  const searchTerm = isFromToken ? fromSearchTerm : toSearchTerm;
+  const setSearchTerm = isFromToken ? setFromSearchTerm : setToSearchTerm;
+  const toggleSearch = isFromToken
+    ? () => setIsFromSearchOpen(!isFromSearchOpen)
+    : () => setIsToSearchOpen(!isToSearchOpen);
+
+  const filteredTokens = [
+    ...topTokens,
+    ...networkTokens,
+    ...exchangeTokens,
+  ].filter((token) =>
+    token.token.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     isSearchOpen && (
       <div
@@ -21,7 +45,7 @@ export const TokenSearchPopup = ({
         }`}
       >
         <div className="h-full flex flex-col p-4">
-          <div className="flex justify-end ">
+          <div className="flex justify-end">
             <button
               onClick={toggleSearch}
               className="text-white opacity-60 hover:opacity-100 text-lg md:text-2xl"
@@ -31,57 +55,35 @@ export const TokenSearchPopup = ({
           </div>
           <input
             type="text"
-            placeholder="Swap from"
+            placeholder={isFromToken ? "Swap from" : "Swap to"}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full bg-transparent border-b border-white border-opacity-20 p-3 text-white placeholder-white placeholder-opacity-60 focus:outline-none mb-4"
           />
           <div className="flex-grow overflow-y-auto">
             {searchTerm ? (
-              filteredTokens.map((token) => (
-                <div
-                  key={token.address}
-                  className="flex items-center px-3 py-2 hover:bg-[#1c2d4a] cursor-pointer"
-                  onClick={() => {
-                    onDropDownChanged(token.address);
-                    toggleSearch();
-                  }}
-                >
-                  {token.imageUrl ? (
-                    <Image
-                      src={token.imageUrl}
-                      alt={token.token}
-                      width={24}
-                      height={24}
-                      className="mr-2 rounded-full"
-                      unoptimized
-                    />
-                  ) : (
-                    <div className="w-6 h-6 mr-2 rounded-full bg-gray-300"></div>
-                  )}
-                  <span className="text-white">{token.token}</span>
-                </div>
-              ))
+              <TokenGroup
+                tokens={filteredTokens}
+                label="Search Results"
+                isFromToken={isFromToken}
+              />
             ) : (
               <>
-                {renderTokenGroup(
-                  topTokens,
-                  "Popular",
-                  onDropDownChanged,
-                  toggleSearch
-                )}
-                {renderTokenGroup(
-                  networkTokens,
-                  "Networks",
-                  onDropDownChanged,
-                  toggleSearch
-                )}
-                {renderTokenGroup(
-                  exchangeTokens,
-                  "Exchanges",
-                  onDropDownChanged,
-                  toggleSearch
-                )}
+                <TokenGroup
+                  tokens={topTokens}
+                  label="Popular"
+                  isFromToken={isFromToken}
+                />
+                <TokenGroup
+                  tokens={networkTokens}
+                  label="Networks"
+                  isFromToken={isFromToken}
+                />
+                <TokenGroup
+                  tokens={exchangeTokens}
+                  label="Exchanges"
+                  isFromToken={isFromToken}
+                />
               </>
             )}
           </div>
