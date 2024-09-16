@@ -12,6 +12,7 @@ import { TokenSearchPopup } from "../components/TokenSearchPopup";
 import NavbarModal from "../components/NavbarModal";
 import { TokenProvider, useTokenContext } from "../context/TokenContext";
 import { fetchTokenInfo } from "../api/tokens";
+import WalletModalCard from "../components/WalletModal";
 
 const LayerswapAppContent = () => {
   const {
@@ -27,6 +28,12 @@ const LayerswapAppContent = () => {
   const [formHeight, setFormHeight] = useState(0);
   const formRef = useRef(null);
 
+  const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
+
+  const toggleWalletModal = () => {
+    setIsWalletModalOpen(!isWalletModalOpen);
+  };
+
   useEffect(() => {
     if (formRef.current) {
       setFormHeight(formRef.current.offsetHeight);
@@ -35,9 +42,6 @@ const LayerswapAppContent = () => {
 
   // Function to close the modal
   const onClose = () => setModalOpen(false);
-
-  // Function to open the modal
-  const onOpen = () => setModalOpen(true);
 
   const toggleFromSearch = () => setIsFromSearchOpen(true);
   const toggleToSearch = () => setIsToSearchOpen(true);
@@ -91,7 +95,7 @@ const LayerswapAppContent = () => {
         >
           {/* Desktop navigation */}
           <section className="hidden md:flex space-x-5 pb-4 text-[21px] justify-end text-white opacity-80">
-            <button type="button">
+            <button type="button" onClick={toggleWalletModal} className="hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200">
               <FaWallet />
             </button>
             <button type="button">
@@ -180,7 +184,7 @@ const LayerswapAppContent = () => {
               <label
                 htmlFor="sendTo"
                 className="text-[13px] md:text-sm text-white opacity-60"
-              >
+                >
                 Send To
               </label>
               <input
@@ -200,6 +204,9 @@ const LayerswapAppContent = () => {
               <p className="text-white text-2xl">-</p>
             </div>
           </section>
+        
+        {/* wallet modal card */}
+        {isWalletModalOpen && <WalletModalCard onClose={toggleWalletModal} />}
 
           {/* Button to select source token */}
           <button
