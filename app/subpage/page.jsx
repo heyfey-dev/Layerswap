@@ -31,13 +31,16 @@ const LayerswapAppContent = () => {
 
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
   const [isHelpChatModalOpen, setHelpChatModalOpen] = useState(false);
+  const [focusedButton, setFocusedButton] = useState(null);
 
   const toggleWalletModal = () => {
     setIsWalletModalOpen(!isWalletModalOpen);
+    if (isWalletModalOpen) setFocusedButton(null);
   };
 
   const toggleHelpChatModal = () => {
     setHelpChatModalOpen(!isHelpChatModalOpen);
+    if (isHelpChatModalOpen) setFocusedButton(null);
   };
 
   useEffect(() => {
@@ -47,7 +50,10 @@ const LayerswapAppContent = () => {
   }, []);
 
   // Function to close the modal
-  const onClose = () => setModalOpen(false);
+  const onClose = () => {
+    setModalOpen(false);
+    setFocusedButton(null);
+  };
 
   const toggleFromSearch = () => setIsFromSearchOpen(true);
   const toggleToSearch = () => setIsToSearchOpen(true);
@@ -72,6 +78,15 @@ const LayerswapAppContent = () => {
     // Fetch data for selected "o" token
     fetchToken(selectedToToken, setToTokenInfo);
   }, [selectedFromToken, selectedToToken]);
+
+  const handleButtonClick = (buttonName, action) => {
+    if (focusedButton === buttonName) {
+      setFocusedButton(null);
+    } else {
+      setFocusedButton(buttonName);
+    }
+    action();
+  };
 
   return (
     <main className="font-sans bg-[#0c1526] md:bg-gradient-to-l from-[#0c1526] via-[#2f1136] to-[#0c1526] min-h-screen w-full py-5">
@@ -101,13 +116,31 @@ const LayerswapAppContent = () => {
         >
           {/* Desktop navigation */}
           <section className="hidden md:flex space-x-5 pb-4 text-[21px] justify-end text-white text-opacity-80">
-            <button type="button" onClick={toggleWalletModal} className="hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200">
+            <button
+              type="button"
+              onClick={() => handleButtonClick('wallet', toggleWalletModal)}
+              className={`hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200 ${
+                focusedButton === 'wallet' ? 'bg-[#1c2d4a] ring-2 ring-[#e32474]' : ''
+              }`}
+            >
               <FaWallet />
             </button>
-            <button type="button" onClick={toggleHelpChatModal} className="hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200">
+            <button
+              type="button"
+              onClick={() => handleButtonClick('helpChat', toggleHelpChatModal)}
+              className={`hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200 ${
+                focusedButton === 'helpChat' ? 'bg-[#1c2d4a] ring-2 ring-[#e32474]' : ''
+              }`}
+            >
               <BiCommentDetail />
             </button>
-            <button type="button" onClick={() => setModalOpen(true)} className="hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200">
+            <button
+              type="button"
+              onClick={() => handleButtonClick('menu', () => setModalOpen(true))}
+              className={`hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200 ${
+                focusedButton === 'menu' ? 'bg-[#1c2d4a] ring-2 ring-[#e32474]' : ''
+              }`}
+            >
               <FaBars />
             </button>
           </section>
