@@ -204,7 +204,8 @@ const LayerswapAppContent = () => {
               <p className="text-white text-2xl">-</p>
             </div>
           </section>
-
+        
+        {/* wallet modal card */}
         {isWalletModalOpen && <WalletModalCard onClose={toggleWalletModal} />}
 
           {/* Button to select source token */}
