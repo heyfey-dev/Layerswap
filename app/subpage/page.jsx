@@ -13,6 +13,7 @@ import NavbarModal from "../components/NavbarModal";
 import { TokenProvider, useTokenContext } from "../context/TokenContext";
 import { fetchTokenInfo } from "../api/tokens";
 import WalletModalCard from "../components/WalletModal";
+import HelpChatModel from "../components/HelpChatModal"
 
 const LayerswapAppContent = () => {
   const {
@@ -98,10 +99,10 @@ const LayerswapAppContent = () => {
             <button type="button" onClick={toggleWalletModal} className="hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200">
               <FaWallet />
             </button>
-            <button type="button">
+            <button type="button" className="hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200">
               <BiCommentDetail />
             </button>
-            <button type="button" onClick={() => setModalOpen(true)}>
+            <button type="button" onClick={() => setModalOpen(true)} className="hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200">
               <FaBars />
             </button>
           </section>
@@ -205,7 +206,7 @@ const LayerswapAppContent = () => {
             </div>
           </section>
         
-        {/* wallet modal card */}
+        {/* wallet modal card rendering */}
         {isWalletModalOpen && <WalletModalCard onClose={toggleWalletModal} />}
 
           {/* Button to select source token */}
@@ -218,6 +219,7 @@ const LayerswapAppContent = () => {
           </button>
         </form>
 
+        <HelpChatModel />
         {/* Popups for token search */}
         <TokenSearchPopup
           isFromToken={true}

@@ -9,7 +9,7 @@ const WalletModalCard = () => {
   ];
 
   return (
-    <div className="bg-[#0f192e] absolute right-5 top-[10%] p-5 rounded-lg w-44 animate-slideDown">
+    <div className="bg-[#0f192e] absolute right-5 top-[5%] p-5 rounded-lg w-44 animate-slideDown">
       {networks.map((network, index) => (
         <button 
           key={network.name} 
@@ -21,7 +21,7 @@ const WalletModalCard = () => {
               <div 
                 key={iconIndex} 
                 className="w-6 h-6 flex items-center justify-center bg-gray-800 rounded-full text-base absolute"
-                style={{ right: `${iconIndex * 15}px`, zIndex: network.icons.length - iconIndex }}
+                style={{ right: `${iconIndex * 17}px`, zIndex: network.icons.length - iconIndex }}
               >
                 {icon}
               </div>
