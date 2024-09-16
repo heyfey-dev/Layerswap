@@ -22,25 +22,46 @@ const HelpChatModal = () => {
           <span className="text-lg font-semibold tracking-wide">Layerswap</span>
         </div>
         <div className="flex mb-4">
-          <div className="w-8 h-8 bg-pink-700 opacity-90 rounded-full flex items-center justify-center z-30">
+          <div className="w-8 h-8 bg-pink-700 opacity-80 rounded-full flex items-center justify-center z-30">
             B
           </div>
-          <div className="w-8 h-8 bg-pink-700 opacity-90 rounded-full flex items-center justify-center -ml-1 z-20">
+          <div className="w-8 h-8 bg-pink-700 opacity-80 rounded-full flex items-center justify-center -ml-1 z-20">
             E
           </div>
-          <div className="w-8 h-8 bg-pink-700 opacity-90 rounded-full flex items-center justify-center -ml-1 z-10">
+          <div className="w-8 h-8 bg-pink-700 opacity-80 rounded-full flex items-center justify-center -ml-1 z-10">
             L
           </div>
         </div>
       </div>
 
-      <div className="ml-14">
-        <h1 className="text-3xl text-[#7a839e] font-bold">Hi there 👋</h1>
-        <h2 className="text-[33px] font-bold">How can we help?</h2>
+      <div>
+        <h1 className="text-3xl text-[#7a839e] font-bold mb-2">Hi there 👋</h1>
+        <h2 className="text-2xl font-semibold">How can we help?</h2>
       </div>
 
       {/* Help Topics */}
-      
+      <div className="border border-blue-300 w-[90%] rounded-lg mx-auto">
+        <div className="space-y-4 divide-y divide-gray-200">
+            <h2>Getting Started</h2>
+          <div className="p-4">
+            <h3 className="font-semibold">Accessing transaction history</h3>
+            <p className="text-gray-600">How to check transfer history?</p>
+          </div>
+          <div className="p-4">
+            <h3 className="font-semibold">Transferring manually</h3>
+            <p className="text-gray-600">
+              How to transfer funds without connecting a wallet?
+            </p>
+          </div>
+          <div className="p-4">
+            <h3 className="font-semibold">Transferring from exchanges</h3>
+            <p className="text-gray-600">
+              How to bridge funds from the CEXes to chains?
+            </p>
+          </div>
+          <button className="bg-[#ff0095] w-full py-2 px-4 rounded-md">Learn more</button>
+        </div>
+      </div>
 
       {/* contact us */}
       <div>
