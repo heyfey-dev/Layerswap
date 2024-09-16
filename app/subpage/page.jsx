@@ -30,9 +30,14 @@ const LayerswapAppContent = () => {
   const formRef = useRef(null);
 
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
+  const [isHelpChatModalOpen, setHelpChatModalOpen] = useState(false);
 
   const toggleWalletModal = () => {
     setIsWalletModalOpen(!isWalletModalOpen);
+  };
+
+  const toggleHelpChatModal = () => {
+    setHelpChatModalOpen(!isHelpChatModalOpen);
   };
 
   useEffect(() => {
@@ -95,11 +100,11 @@ const LayerswapAppContent = () => {
           className="md:bg-[#0c1526] w-full p-6 rounded-md mt-5"
         >
           {/* Desktop navigation */}
-          <section className="hidden md:flex space-x-5 pb-4 text-[21px] justify-end text-white opacity-80">
+          <section className="hidden md:flex space-x-5 pb-4 text-[21px] justify-end text-white text-opacity-80">
             <button type="button" onClick={toggleWalletModal} className="hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200">
               <FaWallet />
             </button>
-            <button type="button" className="hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200">
+            <button type="button" onClick={toggleHelpChatModal} className="hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200">
               <BiCommentDetail />
             </button>
             <button type="button" onClick={() => setModalOpen(true)} className="hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200">
@@ -219,7 +224,9 @@ const LayerswapAppContent = () => {
           </button>
         </form>
 
-        <HelpChatModel />
+        {/* Render HelpChatModal outside the form */}
+        {isHelpChatModalOpen && <HelpChatModel onClose={toggleHelpChatModal} />}
+
         {/* Popups for token search */}
         <TokenSearchPopup
           isFromToken={true}

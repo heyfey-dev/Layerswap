@@ -8,7 +8,7 @@ import Image from "next/image";
 
 const HelpChatModal = () => {
   return (
-    <div className="mt-10 absolute -top-[20%] left-[60%] w-[90%] h-[32rem] flex flex-col overflow-hidden rounded-2xl shadow-lg">
+    <div className="mt-10 absolute -top-[15%] -right-[87%] w-[80%] h-[30rem] flex flex-col overflow-hidden rounded-2xl shadow-lg">
       {/* Gradient background */}
       <div className="h-1/2 bg-gradient-to-r from-[#0c1526] to-[#2f1136]"></div>
       {/* White background */}
@@ -51,12 +51,12 @@ const HelpChatModal = () => {
 
             {/* Help Topics */}
             <div className="bg-white border border-gray-200 shadow-sm mb-5 w-[90%] py-6 space-y-4 rounded-lg mx-auto mt-7">
-              <h2 className="text-[15px] text-black font-medium tracking-wide pl-6">
+              <h2 className="text-sm text-black font-medium tracking-wide pl-6">
                 Getting Started
               </h2>
               <div className="w-full h-px bg-gray-200 my-4"></div>
               <div className="space-y-1 pl-6">
-                <h3 className="text-[15px] text-black font-medium tracking-wide">
+                <h3 className="text-sm text-black font-medium tracking-wide">
                   Accessing transaction history
                 </h3>
                 <p className="text-gray-600 text-sm">
@@ -65,7 +65,7 @@ const HelpChatModal = () => {
               </div>
               <div className="w-full h-px bg-gray-200 my-4"></div>
               <div className="space-y-1 pl-6">
-                <h3 className="text-[15px] text-black font-medium tracking-wide">
+                <h3 className="text-sm text-black font-medium tracking-wide">
                   Transferring manually
                 </h3>
                 <p className="text-gray-600 text-sm">
@@ -74,7 +74,7 @@ const HelpChatModal = () => {
               </div>
               <div className="w-full h-px bg-gray-200 my-4"></div>
               <div className="space-y-1 pl-6">
-                <h3 className="text-[15px] text-black font-medium tracking-wide">
+                <h3 className="text-sm text-black font-medium tracking-wide">
                   Transferring from exchanges
                 </h3>
                 <p className="text-gray-600 text-sm">
@@ -91,7 +91,7 @@ const HelpChatModal = () => {
             {/* contact us */}
             <div className="bg-white border border-gray-200 shadow-sm w-[90%] px-4 py-3 space-y-4 rounded-lg mx-auto flex justify-between items-center mb-5">
               <div>
-                <h3 className="text-[15px] text-black font-medium tracking-wide">
+                <h3 className="text-sm text-black font-medium tracking-wide">
                   Contact us
                 </h3>
                 <p className="text-gray-600 text-sm">
@@ -104,7 +104,7 @@ const HelpChatModal = () => {
             {/* partnership inquiries */}
             <div className="bg-white border border-gray-200 shadow-sm w-[90%] py-2 space-y-4 rounded-lg mx-auto justify-between items-center mb-5">
               <div className="pl-6">
-                <h3 className="text-[15px] text-black font-medium tracking-wide">
+                <h3 className="text-sm text-black font-medium tracking-wide">
                   Partnership Inquiries
                 </h3>
                 <p className="text-gray-600 text-sm">
