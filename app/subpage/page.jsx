@@ -13,7 +13,8 @@ import NavbarModal from "../components/NavbarModal";
 import { TokenProvider, useTokenContext } from "../context/TokenContext";
 import { fetchTokenInfo } from "../api/tokens";
 import WalletModalCard from "../components/WalletModal";
-import HelpChatModel from "../components/HelpChatModal"
+import HelpChatModel from "../components/HelpChatModal";
+import TokenAddressPopup from "../components/TokenAddressPopup";
 
 const LayerswapAppContent = () => {
   const {
@@ -32,6 +33,7 @@ const LayerswapAppContent = () => {
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
   const [isHelpChatModalOpen, setHelpChatModalOpen] = useState(false);
   const [focusedButton, setFocusedButton] = useState(null);
+  const [isTokenAddressPopupOpen, setIsTokenAddressPopupOpen] = useState(false);
 
   const toggleWalletModal = () => {
     setIsWalletModalOpen(!isWalletModalOpen);
@@ -41,6 +43,10 @@ const LayerswapAppContent = () => {
   const toggleHelpChatModal = () => {
     setHelpChatModalOpen(!isHelpChatModalOpen);
     if (isHelpChatModalOpen) setFocusedButton(null);
+  };
+
+  const toggleTokenAddressPopup = () => {
+    setIsTokenAddressPopupOpen((prev) => !prev);
   };
 
   useEffect(() => {
@@ -57,6 +63,10 @@ const LayerswapAppContent = () => {
 
   const toggleFromSearch = () => setIsFromSearchOpen(true);
   const toggleToSearch = () => setIsToSearchOpen(true);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   useEffect(() => {
     // Fetch token information based on selected tokens
@@ -111,6 +121,7 @@ const LayerswapAppContent = () => {
       </div>
       <div className="container mx-auto md:w-[35%] relative">
         <form
+          onClick={handleSubmit}
           ref={formRef}
           className="md:bg-[#0c1526] w-full p-6 rounded-md mt-5"
         >
@@ -118,27 +129,35 @@ const LayerswapAppContent = () => {
           <section className="hidden md:flex space-x-5 pb-4 text-[21px] justify-end text-white text-opacity-80">
             <button
               type="button"
-              onClick={() => handleButtonClick('wallet', toggleWalletModal)}
+              onClick={() => handleButtonClick("wallet", toggleWalletModal)}
               className={`hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200 ${
-                focusedButton === 'wallet' ? 'bg-[#1c2d4a] ring-2 ring-[#e32474]' : ''
+                focusedButton === "wallet"
+                  ? "bg-[#1c2d4a] ring-2 ring-[#e32474]"
+                  : ""
               }`}
             >
               <FaWallet />
             </button>
             <button
               type="button"
-              onClick={() => handleButtonClick('helpChat', toggleHelpChatModal)}
+              onClick={() => handleButtonClick("helpChat", toggleHelpChatModal)}
               className={`hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200 ${
-                focusedButton === 'helpChat' ? 'bg-[#1c2d4a] ring-2 ring-[#e32474]' : ''
+                focusedButton === "helpChat"
+                  ? "bg-[#1c2d4a] ring-2 ring-[#e32474]"
+                  : ""
               }`}
             >
               <BiCommentDetail />
             </button>
             <button
               type="button"
-              onClick={() => handleButtonClick('menu', () => setModalOpen(true))}
+              onClick={() =>
+                handleButtonClick("menu", () => setModalOpen(true))
+              }
               className={`hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200 ${
-                focusedButton === 'menu' ? 'bg-[#1c2d4a] ring-2 ring-[#e32474]' : ''
+                focusedButton === "menu"
+                  ? "bg-[#1c2d4a] ring-2 ring-[#e32474]"
+                  : ""
               }`}
             >
               <FaBars />
@@ -223,15 +242,16 @@ const LayerswapAppContent = () => {
               <label
                 htmlFor="sendTo"
                 className="text-[13px] md:text-sm text-white opacity-60"
-                >
+              >
                 Send To
               </label>
-              <input
-                type="text"
-                placeholder="Address"
-                className="bg-[#111c36] rounded-md w-full p-3 placeholder:text-sm"
-                disabled
-              />
+              <button
+                type="button"
+                onClick={toggleTokenAddressPopup}
+                className="bg-[#111c36] text-white text-opacity-70 text-start text-[15px] rounded-md w-full px-2 py-3 placeholder:text-sm"
+              >
+                Address
+              </button>
             </div>
             <div className="flex justify-between items-center bg-[#111c36] rounded-md w-full p-3">
               <input
@@ -243,9 +263,15 @@ const LayerswapAppContent = () => {
               <p className="text-white text-2xl">-</p>
             </div>
           </section>
-        
-        {/* wallet modal card rendering */}
-        {isWalletModalOpen && <WalletModalCard onClose={toggleWalletModal} />}
+
+          {/* wallet modal card rendering */}
+          {isWalletModalOpen && <WalletModalCard onClose={toggleWalletModal} />}
+
+          {/* Render TokenAddressPopup */}
+          <TokenAddressPopup
+            isOpen={isTokenAddressPopupOpen}
+            onClose={toggleTokenAddressPopup}
+          />
 
           {/* Button to select source token */}
           <button
@@ -277,7 +303,7 @@ const LayerswapAppContent = () => {
       </div>
 
       <Footer />
-      
+
       {/* Button to open the modal */}
       <NavbarModal
         isOpen={isModalOpen}
