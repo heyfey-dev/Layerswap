@@ -1,4 +1,7 @@
 import "./globals.css";
+import ClientWagmiProvider from "./config";
+import { headers } from "next/headers";
+import ContextProvider from "./context";
 
 export const metadata = {
   title: "Create Next App",
@@ -6,9 +9,12 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const cookies = headers().get("cookie");
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ContextProvider cookies={cookies}>{children}</ContextProvider>
+      </body>
     </html>
   );
 }

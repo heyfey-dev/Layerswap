@@ -1,32 +1,45 @@
-import React from 'react';
+import React from "react";
 import { AiOutlineClose, AiOutlineRight } from "react-icons/ai";
-import { RiWallet3Line, RiTwitterXLine, RiChatNewFill, RiServiceFill } from "react-icons/ri";
+import {
+  RiWallet3Line,
+  RiTwitterXLine,
+  RiChatNewFill,
+  RiServiceFill,
+} from "react-icons/ri";
 import { GrDocumentTransfer } from "react-icons/gr";
 import { FaGift, FaBookOpen } from "react-icons/fa";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import { MdPeopleAlt } from "react-icons/md";
-import { BsExclamationCircleFill, BsShieldShaded, BsGithub, BsDiscord, BsYoutube, BsSubstack, BsMapFill } from "react-icons/bs";
+import {
+  BsExclamationCircleFill,
+  BsShieldShaded,
+  BsGithub,
+  BsDiscord,
+  BsYoutube,
+  BsSubstack,
+  BsMapFill,
+} from "react-icons/bs";
 import { PiSignInBold } from "react-icons/pi";
 
-const NavbarModal = ({ isOpen, onClose, formHeight }) => {
+const NavbarModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-start justify-center z-50 pt-[100px]">
-      <div className="fixed inset-0 bg-black bg-opacity-50" onClick={onClose}></div>
-
+    <div className="absolute inset-0 z-50 flex items-center justify-center">
       {/* Modal content */}
       <div
-        className={`bg-[#0c1526] border border-white border-opacity-5 rounded-md shadow-lg overflow-hidden transition-all duration-500 ease-out z-10 w-full md:w-[35%] ${
+        className={`absolute inset-0 bg-[#14213d] border-t border-white border-opacity-5 rounded-md shadow-lg overflow-hidden transition-all duration-500 ease-out ${
           isOpen ? "popup-enter" : "popup-exit"
         }`}
-        style={{ height: `${formHeight}px` }}
       >
         <div className="text-white h-full flex flex-col">
           {/* Modal Header */}
-          <header className="flex justify-between items-center text-[#9fa9c4] p-4 bg-[#0c1526] sticky top-0 z-10">
+          <header className="flex justify-between items-center text-[#9fa9c4] p-4 sticky top-0 z-10">
             <span className="text-base md:text-lg font-semibold">Menu</span>
-            <AiOutlineClose onClick={onClose} className="cursor-pointer text-xl md:text-2xl" />
+            <AiOutlineClose
+              onClick={onClose}
+              className="cursor-pointer text-xl md:text-2xl"
+            />
           </header>
 
           <div className="flex-grow overflow-y-auto">
@@ -34,7 +47,7 @@ const NavbarModal = ({ isOpen, onClose, formHeight }) => {
               {/* Connect a Wallet */}
               <div className="bg-[#381836] w-[94%] px-4 py-2 rounded-lg flex items-center mx-auto justify-between cursor-pointer">
                 <RiWallet3Line className="text-[#e32474] text-2xl" />
-                <span className="w-full text-sm tracking-wide text-center text-[#e32474]">
+                <span className="w-full font-bold text-sm tracking-wide text-center text-[#e32474]">
                   Connect a wallet
                 </span>
               </div>
@@ -72,7 +85,9 @@ const NavbarModal = ({ isOpen, onClose, formHeight }) => {
                   <div className="flex justify-between items-center p-3 cursor-pointer">
                     <div className="flex items-center space-x-2">
                       <FaBookOpen />
-                      <span className="text-sm font-semibold">Docs for Users</span>
+                      <span className="text-sm font-semibold">
+                        Docs for Users
+                      </span>
                     </div>
                     <HiOutlineExternalLink className="text-sm" />
                   </div>
@@ -80,7 +95,9 @@ const NavbarModal = ({ isOpen, onClose, formHeight }) => {
                   <div className="flex justify-between items-center p-3 cursor-pointer">
                     <div className="flex items-center space-x-2">
                       <MdPeopleAlt />
-                      <span className="text-sm font-semibold">Docs for Partners</span>
+                      <span className="text-sm font-semibold">
+                        Docs for Partners
+                      </span>
                     </div>
                     <HiOutlineExternalLink className="text-sm" />
                   </div>
@@ -91,7 +108,9 @@ const NavbarModal = ({ isOpen, onClose, formHeight }) => {
                   <div className="flex justify-between items-center p-3 cursor-pointer">
                     <div className="flex items-center space-x-2">
                       <BsShieldShaded />
-                      <span className="text-sm font-semibold">Privacy Policy</span>
+                      <span className="text-sm font-semibold">
+                        Privacy Policy
+                      </span>
                     </div>
                     <HiOutlineExternalLink className="text-sm" />
                   </div>
@@ -99,7 +118,9 @@ const NavbarModal = ({ isOpen, onClose, formHeight }) => {
                   <div className="flex justify-between items-center p-3 cursor-pointer">
                     <div className="flex items-center space-x-2">
                       <RiServiceFill />
-                      <span className="text-sm font-semibold">Terms of Service</span>
+                      <span className="text-sm font-semibold">
+                        Terms of Service
+                      </span>
                     </div>
                     <HiOutlineExternalLink className="text-sm" />
                   </div>
@@ -109,7 +130,9 @@ const NavbarModal = ({ isOpen, onClose, formHeight }) => {
                 <div className="flex justify-between items-center bg-[#111c36] p-2 rounded cursor-pointer">
                   <div className="flex items-center space-x-2">
                     <RiChatNewFill />
-                    <span className="text-sm font-semibold">Suggest a Feature</span>
+                    <span className="text-sm font-semibold">
+                      Suggest a Feature
+                    </span>
                   </div>
                   <AiOutlineRight className="text-sm" />
                 </div>
@@ -153,7 +176,7 @@ const NavbarModal = ({ isOpen, onClose, formHeight }) => {
           </div>
 
           {/* Sign In Section */}
-          <div className="bg-[#0c1526] sticky bottom-0 z-10 pb-4 pt-2">
+          <div className="bg-[#0c1526] sticky bottom-0 left-0 right-0 z-20 pb-4 pt-2">
             <div className="border-t border-[#2C3A57] mb-4"></div>
             <nav
               onClick={onClose}
