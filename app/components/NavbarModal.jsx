@@ -20,29 +20,21 @@ import {
   BsMapFill,
 } from "react-icons/bs";
 import { PiSignInBold } from "react-icons/pi";
-import { useAppKit } from "@reown/appkit/react";
 
-const NavbarModal = ({ isOpen, onClose, formHeight }) => {
+const NavbarModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
-  const { open, close } = useAppKit();
 
   return (
-    <div className="fixed inset-0 flex items-start justify-center z-50 pt-[100px]">
-      <div
-        className="fixed inset-0 bg-black bg-opacity-50"
-        onClick={onClose}
-      ></div>
-
+    <div className="absolute inset-0 z-50 flex items-center justify-center">
       {/* Modal content */}
       <div
-        className={`bg-[#0c1526] border border-white border-opacity-5 rounded-md shadow-lg overflow-hidden transition-all duration-500 ease-out z-10 w-full md:w-[35%] ${
+        className={`absolute inset-0 bg-[#14213d] border-t border-white border-opacity-5 rounded-md shadow-lg overflow-hidden transition-all duration-500 ease-out ${
           isOpen ? "popup-enter" : "popup-exit"
         }`}
-        style={{ height: `${formHeight}px` }}
       >
         <div className="text-white h-full flex flex-col">
           {/* Modal Header */}
-          <header className="flex justify-between items-center text-[#9fa9c4] p-4 bg-[#0c1526] sticky top-0 z-10">
+          <header className="flex justify-between items-center text-[#9fa9c4] p-4 sticky top-0 z-10">
             <span className="text-base md:text-lg font-semibold">Menu</span>
             <AiOutlineClose
               onClick={onClose}
@@ -55,10 +47,7 @@ const NavbarModal = ({ isOpen, onClose, formHeight }) => {
               {/* Connect a Wallet */}
               <div className="bg-[#381836] w-[94%] px-4 py-2 rounded-lg flex items-center mx-auto justify-between cursor-pointer">
                 <RiWallet3Line className="text-[#e32474] text-2xl" />
-                <span
-                  className="w-full text-sm tracking-wide text-center text-[#e32474]"
-                  onClick={open}
-                >
+                <span className="w-full font-bold text-sm tracking-wide text-center text-[#e32474]">
                   Connect a wallet
                 </span>
               </div>
@@ -187,7 +176,7 @@ const NavbarModal = ({ isOpen, onClose, formHeight }) => {
           </div>
 
           {/* Sign In Section */}
-          <div className="bg-[#0c1526] sticky bottom-0 z-10 pb-4 pt-2">
+          <div className="bg-[#0c1526] sticky bottom-0 left-0 right-0 z-20 pb-4 pt-2">
             <div className="border-t border-[#2C3A57] mb-4"></div>
             <nav
               onClick={onClose}
