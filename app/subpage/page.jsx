@@ -27,7 +27,6 @@ const LayerswapAppContent = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [fromTokenInfo, setFromTokenInfo] = useState(null);
   const [toTokenInfo, setToTokenInfo] = useState(null);
-  const [formHeight, setFormHeight] = useState(0);
   const formRef = useRef(null);
 
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
@@ -48,12 +47,6 @@ const LayerswapAppContent = () => {
   const toggleTokenAddressPopup = () => {
     setIsTokenAddressPopupOpen((prev) => !prev);
   };
-
-  useEffect(() => {
-    if (formRef.current) {
-      setFormHeight(formRef.current.offsetHeight);
-    }
-  }, []);
 
   // Function to close the modal
   const onClose = () => {
@@ -115,8 +108,28 @@ const LayerswapAppContent = () => {
           </h2>
         </div>
         <div className="md:hidden relative left-[70px] flex space-x-5 text-[19px] text-white opacity-80">
-          <FaWallet />
-          <FaBars />
+          <button
+            type="button"
+            onClick={() => handleButtonClick("wallet", toggleWalletModal)}
+            className={`hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200 ${
+              focusedButton === "wallet"
+                ? "bg-[#1c2d4a] ring-2 ring-[#e32474]"
+                : ""
+            }`}
+          >
+            <FaWallet />
+          </button>
+          <button
+            type="button"
+            onClick={() => handleButtonClick("menu", () => setModalOpen(true))}
+            className={`hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200 ${
+              focusedButton === "menu"
+                ? "bg-[#1c2d4a] ring-2 ring-[#e32474]"
+                : ""
+            }`}
+          >
+            <FaBars />
+          </button>{" "}
         </div>
       </div>
       <div className="container mx-auto md:w-[35%] relative">
@@ -273,6 +286,9 @@ const LayerswapAppContent = () => {
             onClose={toggleTokenAddressPopup}
           />
 
+          {/* Button to open the modal */}
+          <NavbarModal isOpen={isModalOpen} onClose={onClose} />
+
           {/* Button to select source token */}
           <button
             type="button"
@@ -303,13 +319,6 @@ const LayerswapAppContent = () => {
       </div>
 
       <Footer />
-
-      {/* Button to open the modal */}
-      <NavbarModal
-        isOpen={isModalOpen}
-        onClose={onClose}
-        formHeight={formHeight}
-      />
     </main>
   );
 };
