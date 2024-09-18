@@ -22,6 +22,7 @@ import {
 import { PiSignInBold } from "react-icons/pi";
 import { useAppKit } from "@reown/appkit/react";
 import { useAccount, useConnect } from "wagmi";
+import Image from "next/image";
 
 const NavbarModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;

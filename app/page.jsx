@@ -46,7 +46,6 @@ export default function Home() {
         <form className="container mx-auto bg-[#0c1526] w-full max-w-xs sm:max-w-sm md:max-w-md p-6 rounded-xl mt-[72px] md:mt-10 border border-white border-opacity-10 md:hover:translate-y-[-25px] transform transition duration-700 ease-in-out cursor-pointer">
           <section>
             <div className="flex flex-col space-y-7 relative">
-              <w3m-button />
               <Link
                 href={"/subpage"}
                 className="bg-[#111c36] rounded-md py-4 px-3 space-y-1"
