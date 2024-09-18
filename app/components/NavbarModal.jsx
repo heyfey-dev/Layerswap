@@ -20,9 +20,16 @@ import {
   BsMapFill,
 } from "react-icons/bs";
 import { PiSignInBold } from "react-icons/pi";
+import { useAppKit } from "@reown/appkit/react";
+import { useAccount, useConnect } from "wagmi";
 
 const NavbarModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
+  const { open } = useAppKit();
+  const { address, isConnected } = useAccount(); // Get account address and connection status
+  const { connectors, connectedConnector } = useConnect();
+
+  const walletIcon = connectedConnector?.options?.icon;
 
   return (
     <div className="absolute inset-0 z-50 flex items-center justify-center">
@@ -46,10 +53,31 @@ const NavbarModal = ({ isOpen, onClose }) => {
             <div className="py-5">
               {/* Connect a Wallet */}
               <div className="bg-[#381836] w-[94%] px-4 py-2 rounded-lg flex items-center mx-auto justify-between cursor-pointer">
-                <RiWallet3Line className="text-[#e32474] text-2xl" />
-                <span className="w-full font-bold text-sm tracking-wide text-center text-[#e32474]">
-                  Connect a wallet
-                </span>
+                {isConnected ? (
+                  <>
+                    {walletIcon && (
+                      <Image
+                        src={walletIcon}
+                        alt="wallet icon"
+                        height={24}
+                        width={24}
+                      />
+                    )}
+                    <span onClick={() => open()}>{address}</span>{" "}
+                    {/* Display account address */}
+                  </>
+                ) : (
+                  <>
+                    <RiWallet3Line className="text-[#e32474] text-2xl" />
+
+                    <span
+                      className="w-full font-bold text-sm tracking-wide text-center text-[#e32474]"
+                      onClick={() => open()}
+                    >
+                      Connect a wallet
+                    </span>
+                  </>
+                )}
               </div>
 
               <div className="space-y-4 p-4">
