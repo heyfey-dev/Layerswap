@@ -61,26 +61,26 @@ const LayerswapAppContent = () => {
     e.preventDefault();
   };
 
-  // useEffect(() => {
-  //   // Fetch token information based on selected tokens
-  //   const fetchToken = async (token, setter) => {
-  //     if (token) {
-  //       try {
-  //         const response = await fetchTokenInfo(token.address);
-  //         if (response.status === 200) {
-  //           setter(response.data);
-  //         }
-  //       } catch (error) {
-  //         console.error(`Error fetching token info for ${token.token}:`, error);
-  //       }
-  //     }
-  //   };
+  useEffect(() => {
+    // Fetch token information based on selected tokens
+    const fetchToken = async (token, setter) => {
+      if (token) {
+        try {
+          const response = await fetchTokenInfo(token.address);
+          if (response.status === 200) {
+            setter(response.data);
+          }
+        } catch (error) {
+          console.error(`Error fetching token info for ${token.token}:`, error);
+        }
+      }
+    };
 
-  //   // Fetch data for selected "From" token
-  //   fetchToken(selectedFromToken, setFromTokenInfo);
-  //   // Fetch data for selected "o" token
-  //   fetchToken(selectedToToken, setToTokenInfo);
-  // }, [selectedFromToken, selectedToToken]);
+    // Fetch data for selected "From" token
+    fetchToken(selectedFromToken, setFromTokenInfo);
+    // Fetch data for selected "o" token
+    fetchToken(selectedToToken, setToTokenInfo);
+  }, [selectedFromToken, selectedToToken]);
 
   const fetchMinMax = async () => {
     console.log(fromTokenInfo);
