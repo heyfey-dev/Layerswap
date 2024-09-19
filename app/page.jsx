@@ -1,13 +1,13 @@
 import { FaArrowRight, FaChevronDown, FaChevronRight } from "react-icons/fa6";
-import { Navbar } from "./components/Navbar";
 import { IoSwapVertical } from "react-icons/io5";
 import { LandingPageFooter } from "./components/LandingPageFooter";
 import Link from "next/link";
+import { LandingPageNavbar } from "./components/LandingPageNavbar";
 
 export default function Home() {
   return (
     <main className="font-sans bg-[#0b1124] h-[100vh] w-full overflow-y-hidden">
-      <Navbar />
+      <LandingPageNavbar />
 
       <div className="mt-10 md:mt-16">
         <section className="flex flex-col ml-5 md:ml-0 items-start md:items-center text-white space-y-3">

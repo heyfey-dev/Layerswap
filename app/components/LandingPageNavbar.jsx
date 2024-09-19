@@ -1,7 +1,7 @@
 import Image from "next/image";
 import layerswapLogo from "../public/layerswap_logo.png";
 
-export const Navbar = () => {
+export const LandingPageNavbar = () => {
   return (
     <nav className="font-sans container max-w-full border-b border-[#232b3b] pb-1">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between md:mx-28">

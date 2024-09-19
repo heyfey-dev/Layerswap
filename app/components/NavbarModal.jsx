@@ -85,7 +85,7 @@ const NavbarModal = ({ isOpen, onClose }) => {
               <div className="space-y-4 p-4">
                 <div className="bg-[#111c36] rounded">
                   {/* transfers & campaigns*/}
-                  <div className="flex justify-between items-center p-3 cursor-pointer">
+                  <div className="flex justify-between items-center p-3 cursor-pointer hover:bg-[#1c2e5a] transition-colors duration-200">
                     <div className="flex items-center space-x-3">
                       <GrDocumentTransfer className="font-bold" />
                       <span className="text-sm font-semibold">Transfers</span>
@@ -93,7 +93,7 @@ const NavbarModal = ({ isOpen, onClose }) => {
                     <AiOutlineRight className="text-sm" />
                   </div>
                   <div className="border-t border-[#2C3A57]"></div>
-                  <div className="flex justify-between items-center p-3 cursor-pointer">
+                  <div className="flex justify-between items-center p-3 cursor-pointer hover:bg-[#1c2e5a] transition-colors duration-200">
                     <div className="flex items-center space-x-3">
                       <FaGift />
                       <span className="text-sm font-semibold">Campaigns</span>
@@ -104,7 +104,7 @@ const NavbarModal = ({ isOpen, onClose }) => {
 
                 {/* help, docs of users, docs of partners*/}
                 <div className="bg-[#111c36] rounded">
-                  <div className="flex justify-between items-center p-3 cursor-pointer">
+                  <div className="flex justify-between items-center p-3 cursor-pointer hover:bg-[#1c2e5a] transition-colors duration-200">
                     <div className="flex items-center space-x-2">
                       <BsExclamationCircleFill />
                       <span className="text-sm font-semibold">Help</span>
@@ -112,7 +112,7 @@ const NavbarModal = ({ isOpen, onClose }) => {
                     <AiOutlineRight className="text-sm" />
                   </div>
                   <div className="border-t border-[#2C3A57]"></div>
-                  <div className="flex justify-between items-center p-3 cursor-pointer">
+                  <div className="flex justify-between items-center p-3 cursor-pointer hover:bg-[#1c2e5a] transition-colors duration-200">
                     <div className="flex items-center space-x-2">
                       <FaBookOpen />
                       <span className="text-sm font-semibold">
@@ -122,7 +122,7 @@ const NavbarModal = ({ isOpen, onClose }) => {
                     <HiOutlineExternalLink className="text-sm" />
                   </div>
                   <div className="border-t border-[#2C3A57]"></div>
-                  <div className="flex justify-between items-center p-3 cursor-pointer">
+                  <div className="flex justify-between items-center p-3 cursor-pointer hover:bg-[#1c2e5a] transition-colors duration-200">
                     <div className="flex items-center space-x-2">
                       <MdPeopleAlt />
                       <span className="text-sm font-semibold">
@@ -135,7 +135,7 @@ const NavbarModal = ({ isOpen, onClose }) => {
 
                 {/* privacy policy & terms of service*/}
                 <div className="bg-[#111c36] rounded">
-                  <div className="flex justify-between items-center p-3 cursor-pointer">
+                  <div className="flex justify-between items-center p-3 cursor-pointer hover:bg-[#1c2e5a] transition-colors duration-200">
                     <div className="flex items-center space-x-2">
                       <BsShieldShaded />
                       <span className="text-sm font-semibold">
@@ -145,7 +145,7 @@ const NavbarModal = ({ isOpen, onClose }) => {
                     <HiOutlineExternalLink className="text-sm" />
                   </div>
                   <div className="border-t border-[#2C3A57]"></div>
-                  <div className="flex justify-between items-center p-3 cursor-pointer">
+                  <div className="flex justify-between items-center p-3 cursor-pointer hover:bg-[#1c2e5a] transition-colors duration-200">
                     <div className="flex items-center space-x-2">
                       <RiServiceFill />
                       <span className="text-sm font-semibold">
@@ -157,7 +157,7 @@ const NavbarModal = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Suggest a Feature */}
-                <div className="flex justify-between items-center bg-[#111c36] p-2 rounded cursor-pointer">
+                <div className="flex justify-between items-center bg-[#111c36] p-2 rounded cursor-pointer hover:bg-[#1c2e5a] transition-colors duration-200">
                   <div className="flex items-center space-x-2">
                     <RiChatNewFill />
                     <span className="text-sm font-semibold">
@@ -176,27 +176,27 @@ const NavbarModal = ({ isOpen, onClose }) => {
                   Media links & suggestions:
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
-                  <button className="bg-[#111c36] p-2 flex items-center justify-center space-x-2 rounded-lg">
+                  <button className="bg-[#111c36] p-2 flex items-center justify-center space-x-2 rounded-lg hover:bg-[#1c2e5a] transition-colors duration-200">
                     <RiTwitterXLine className="text-lg" />
                     <span className="text-[15px]">Twitter</span>
                   </button>
-                  <button className="bg-[#111c36] p-2 flex items-center justify-center space-x-2 rounded-lg">
+                  <button className="bg-[#111c36] p-2 flex items-center justify-center space-x-2 rounded-lg hover:bg-[#1c2e5a] transition-colors duration-200">
                     <BsGithub className="text-lg" />
                     <span className="text-[15px]">GitHub</span>
                   </button>
-                  <button className="bg-[#111c36] p-2 flex items-center justify-center space-x-2 rounded-lg">
+                  <button className="bg-[#111c36] p-2 flex items-center justify-center space-x-2 rounded-lg hover:bg-[#1c2e5a] transition-colors duration-200">
                     <BsDiscord className="text-lg" />
                     <span className="text-[15px]">Discord</span>
                   </button>
-                  <button className="bg-[#111c36] p-2 flex items-center justify-center space-x-2 rounded-lg">
+                  <button className="bg-[#111c36] p-2 flex items-center justify-center space-x-2 rounded-lg hover:bg-[#1c2e5a] transition-colors duration-200">
                     <BsYoutube className="text-lg" />
                     <span className="text-[15px]">YouTube</span>
                   </button>
-                  <button className="bg-[#111c36] p-2 flex items-center justify-center space-x-2 rounded-lg">
+                  <button className="bg-[#111c36] p-2 flex items-center justify-center space-x-2 rounded-lg hover:bg-[#1c2e5a] transition-colors duration-200">
                     <BsSubstack className="text-lg" />
                     <span className="text-[15px]">Substack</span>
                   </button>
-                  <button className="bg-[#111c36] p-2 flex items-center justify-center space-x-2 rounded-lg">
+                  <button className="bg-[#111c36] p-2 flex items-center justify-center space-x-2 rounded-lg hover:bg-[#1c2e5a] transition-colors duration-200">
                     <BsMapFill className="text-lg" />
                     <span className="text-[15px]">Roadmap</span>
                   </button>
