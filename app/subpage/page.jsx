@@ -68,7 +68,12 @@ const LayerswapAppContent = () => {
         try {
           const response = await fetchTokenInfo(token.address);
           if (response.status === 200) {
-            setter(response.data);
+            console.log('Response data:', response.data); // Log the response data
+            console.log('Token address:', token.address); // Log the token address
+            setter({
+              ...response.data,
+              address: token.address // Add the token address
+            });
           }
         } catch (error) {
           console.error(`Error fetching token info for ${token.token}:`, error);
@@ -78,14 +83,14 @@ const LayerswapAppContent = () => {
 
     // Fetch data for selected "From" token
     fetchToken(selectedFromToken, setFromTokenInfo);
-    // Fetch data for selected "o" token
+    // Fetch data for selected "To" token
     fetchToken(selectedToToken, setToTokenInfo);
   }, [selectedFromToken, selectedToToken]);
 
   const fetchMinMax = async () => {
     console.log(fromTokenInfo);
     console.log(toTokenInfo);
-    console.log(formRef);
+    console.log(formRef);x
     // setLoading(true);
     try {
       const response = await axios.get(`${API_URL}`, {
