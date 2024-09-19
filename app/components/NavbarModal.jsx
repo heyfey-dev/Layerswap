@@ -25,10 +25,11 @@ import { useAccount, useConnect } from "wagmi";
 import Image from "next/image";
 
 const NavbarModal = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
   const { open } = useAppKit();
   const { address, isConnected } = useAccount(); // Get account address and connection status
   const { connectors, connectedConnector } = useConnect();
+
+  if (!isOpen) return null;
 
   const walletIcon = connectedConnector?.options?.icon;
 
