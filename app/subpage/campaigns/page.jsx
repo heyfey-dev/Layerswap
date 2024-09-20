@@ -2,9 +2,9 @@ import React from "react";
 import { BiCommentDetail } from "react-icons/bi";
 import { FaArrowLeft, FaBars, FaWallet } from "react-icons/fa6";
 
-const CampaignsPageModal = () => {
+const CampaignsSubpage = () => {
   return (
-    <div className="bg-gray-900 text-white p-4 rounded-lg">
+    <div className="bg-gray-900 w-full h-full text-white p-4 rounded-lg">
       <div className="flex items-center justify-between">
         <button>
           <FaArrowLeft className="text-lg text-white text-opacity-80" />
@@ -56,4 +56,4 @@ const CampaignsPageModal = () => {
   );
 };
 
-export default CampaignsPageModal;
+export default CampaignsSubpage;

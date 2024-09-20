@@ -40,6 +40,7 @@ const LayerswapAppContent = () => {
   const [isHelpChatModalOpen, setHelpChatModalOpen] = useState(false);
   const [focusedButton, setFocusedButton] = useState(null);
   const [isTokenAddressPopupOpen, setIsTokenAddressPopupOpen] = useState(false);
+  const [showCampaignsSubpage, setShowCampaignsSubpage] = useState(false);
 
   const toggleWalletModal = () => {
     setIsWalletModalOpen(!isWalletModalOpen);
@@ -99,17 +100,20 @@ const LayerswapAppContent = () => {
     fetchLimits();
   }, [selectedFromToken, selectedToToken]);
 
-  const fetchTransferDetails = async () => {
-    if (
-      !amount ||
-      amount < minLimit ||
-      amount > maxLimit ||
-      !minLimit ||
-      !maxLimit
-    ) {
-      console.log("Fill required fields or check the amount limit");
-      return;
-    }
+  const fetchMinMax = async () => {
+    console.log(fromTokenInfo);
+    console.log(toTokenInfo);
+    console.log(formRef);
+    x;
+    // setLoading(true);
+    try {
+      const response = await axios.get(`${API_URL}`, {
+        params: {
+          sellToken: fromTokenInfo,
+          buyToken: toTokenInfo,
+          sellAmount: 1000000000000000000, // 1 token, for testing purposes
+        },
+      });
 
     try {
       const response = await axios.get(
