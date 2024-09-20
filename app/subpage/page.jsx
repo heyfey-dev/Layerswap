@@ -15,6 +15,8 @@ import { fetchTokenInfo } from "../api/tokens";
 import WalletModalCard from "../components/WalletModal";
 import HelpChatModel from "../components/HelpChatModal";
 import TokenAddressPopup from "../components/TokenAddressPopup";
+import axios from "axios";
+import { timeStringToSeconds } from "../utils";
 
 const LayerswapAppContent = () => {
   const {
@@ -28,6 +30,11 @@ const LayerswapAppContent = () => {
   const [fromTokenInfo, setFromTokenInfo] = useState(null);
   const [toTokenInfo, setToTokenInfo] = useState(null);
   const formRef = useRef(null);
+
+  const [minLimit, setMinLimit] = useState(null);
+  const [maxLimit, setMaxLimit] = useState(null);
+  const [amount, setAmount] = useState(null);
+  const [quote, setQuote] = useState(null);
 
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
   const [isHelpChatModalOpen, setHelpChatModalOpen] = useState(false);
@@ -62,53 +69,74 @@ const LayerswapAppContent = () => {
   };
 
   useEffect(() => {
-    // Fetch token information based on selected tokens
-    const fetchToken = async (token, setter) => {
-      if (token) {
-        try {
-          const response = await fetchTokenInfo(token.address);
-          if (response.status === 200) {
-            console.log('Response data:', response.data); // Log the response data
-            console.log('Token address:', token.address); // Log the token address
-            setter({
-              ...response.data,
-              address: token.address // Add the token address
-            });
+    const fetchLimits = async () => {
+      if (!selectedFromToken || !selectedToToken) {
+        setMinLimit(null);
+        setMaxLimit(null);
+        return;
+      }
+
+      try {
+        const response = await axios.get(
+          `https://api.layerswap.io/api/v2/limits?source_network=${selectedFromToken.network}&source_token=ETH&destination_network=${selectedToToken.network}&destination_token=ETH`,
+          {
+            headers: {
+              "X-LS-APIKEY":
+                "NDBxG+aon6WlbgIA2LfwmcbLU52qUL9qTnztTuTRPNSohf/VnxXpRaJlA5uLSQVqP8YGIiy/0mz+mMeZhLY4/Q",
+              Accept: "application/json",
+            },
           }
-        } catch (error) {
-          console.error(`Error fetching token info for ${token.token}:`, error);
+        );
+        if (response.status === 200) {
+          setMinLimit(response.data.data.min_amount);
+          setMaxLimit(response.data.data.max_amount);
         }
+      } catch (error) {
+        console.error("Error fetching limits", error);
       }
     };
 
-    // Fetch data for selected "From" token
-    fetchToken(selectedFromToken, setFromTokenInfo);
-    // Fetch data for selected "To" token
-    fetchToken(selectedToToken, setToTokenInfo);
+    fetchLimits();
   }, [selectedFromToken, selectedToToken]);
 
-  const fetchMinMax = async () => {
-    console.log(fromTokenInfo);
-    console.log(toTokenInfo);
-    console.log(formRef);x
-    // setLoading(true);
-    try {
-      const response = await axios.get(`${API_URL}`, {
-        params: {
-          sellToken: fromTokenInfo,
-          buyToken: toTokenInfo,
-          sellAmount: 1000000000000000000, // 1 token, for testing purposes
-        },
-      });
+  const fetchTransferDetails = async () => {
+    if (
+      !amount ||
+      amount < minLimit ||
+      amount > maxLimit ||
+      !minLimit ||
+      !maxLimit
+    ) {
+      console.log("Fill required fields or check the amount limit");
+      return;
+    }
 
-      const minAmount = response.data.minBuyAmount;
-      const maxAmount = response.data.buyAmount;
-      // setMinAmount(minAmount);
-      // setMaxAmount(maxAmount);
+    try {
+      const response = await axios.get(
+        `https://api.layerswap.io/api/v2/quote?source_network=${selectedFromToken.network}&source_token=ETH&destination_network=${selectedToToken.network}&destination_token=ETH&amount=${amount}`,
+        {
+          headers: {
+            "X-LS-APIKEY":
+              "NDBxG+aon6WlbgIA2LfwmcbLU52qUL9qTnztTuTRPNSohf/VnxXpRaJlA5uLSQVqP8YGIiy/0mz+mMeZhLY4/Q",
+            Accept: "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        const quoteData = response.data.data.quote;
+        setQuote({
+          totalFee: quoteData.total_fee,
+          totalFeeUSD: quoteData.total_fee_in_usd,
+          receiveAmount: quoteData.receive_amount,
+          avgCompletionTime: Math.floor(
+            timeStringToSeconds(quoteData.avg_completion_time)
+          ),
+        });
+        console.log(quote);
+      }
     } catch (error) {
-      console.error("Error fetching min and max amounts:", error);
-    } finally {
-      // setLoading(false);
+      console.error("Error fetching quotes", error);
     }
   };
 
@@ -276,9 +304,12 @@ const LayerswapAppContent = () => {
                 Amount
               </label>
               <input
-                type="text"
-                placeholder="0.0"
+                type="number"
+                placeholder={minLimit ? `${minLimit} - ${maxLimit}` : ""}
                 className="bg-[#111c36] rounded-md w-full p-3 placeholder:text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#e32474]"
+                value={amount || ""}
+                onChange={(e) => setAmount(Number(e.target.value))}
+                onBlur={fetchTransferDetails}
               />
             </div>
             <div className="flex flex-col space-y-1">
@@ -348,6 +379,15 @@ const LayerswapAppContent = () => {
           networkTokens={networkTokens}
           exchangeTokens={exchangeTokens}
         />
+      </div>
+
+      <div style={{ color: "white" }}>
+        {quote
+          ? `Estimated time: ${quote.avgCompletionTime}
+          Fee: ${quote.totalFee} (${quote.totalFeeUSD.toFixed(
+              2
+            )}) You will receive: ${quote.receiveAmount}`
+          : ""}
       </div>
 
       <Footer />
