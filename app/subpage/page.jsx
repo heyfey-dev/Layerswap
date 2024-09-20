@@ -4,8 +4,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { BiCommentDetail } from "react-icons/bi";
 import { FaBars, FaChevronDown, FaWallet } from "react-icons/fa6";
 import { IoSwapVertical } from "react-icons/io5";
-import Image from "next/image";
-import layerswapLogo from "../public/layerswap_logo.png";
 import { Footer } from "../components/Footer";
 import { exchangeTokens, networkTokens, topTokens } from "../constants/tokens";
 import { TokenSearchPopup } from "../components/TokenSearchPopup";
@@ -17,8 +15,22 @@ import HelpChatModel from "../components/HelpChatModal";
 import TokenAddressPopup from "../components/TokenAddressPopup";
 import axios from "axios";
 import { timeStringToSeconds } from "../utils";
+import SubpageHeader from "../components/SubpageHeader";
+import { ButtonProvider, useButtonContext } from "../context/ButtonContext";
 
 const LayerswapAppContent = () => {
+  const {
+    isModalOpen,
+    setModalOpen,
+    isWalletModalOpen,
+    isHelpChatModalOpen,
+    focusedButton,
+    toggleWalletModal,
+    toggleHelpChatModal,
+    onClose,
+    handleButtonClick,
+  } = useButtonContext();
+
   const {
     selectedFromToken,
     selectedToToken,
@@ -26,7 +38,6 @@ const LayerswapAppContent = () => {
     setIsToSearchOpen,
   } = useTokenContext();
 
-  const [isModalOpen, setModalOpen] = useState(false);
   const [fromTokenInfo, setFromTokenInfo] = useState(null);
   const [toTokenInfo, setToTokenInfo] = useState(null);
   const formRef = useRef(null);
@@ -36,30 +47,7 @@ const LayerswapAppContent = () => {
   const [amount, setAmount] = useState(null);
   const [quote, setQuote] = useState(null);
 
-  const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
-  const [isHelpChatModalOpen, setHelpChatModalOpen] = useState(false);
-  const [focusedButton, setFocusedButton] = useState(null);
   const [isTokenAddressPopupOpen, setIsTokenAddressPopupOpen] = useState(false);
-
-  const toggleWalletModal = () => {
-    setIsWalletModalOpen(!isWalletModalOpen);
-    if (isWalletModalOpen) setFocusedButton(null);
-  };
-
-  const toggleHelpChatModal = () => {
-    setHelpChatModalOpen(!isHelpChatModalOpen);
-    if (isHelpChatModalOpen) setFocusedButton(null);
-  };
-
-  const toggleTokenAddressPopup = () => {
-    setIsTokenAddressPopupOpen((prev) => !prev);
-  };
-
-  // Function to close the modal
-  const onClose = () => {
-    setModalOpen(false);
-    setFocusedButton(null);
-  };
 
   const toggleFromSearch = () => setIsFromSearchOpen(true);
   const toggleToSearch = () => setIsToSearchOpen(true);
@@ -140,31 +128,15 @@ const LayerswapAppContent = () => {
     }
   };
 
-  const handleButtonClick = (buttonName, action) => {
-    if (focusedButton === buttonName) {
-      setFocusedButton(null);
-    } else {
-      setFocusedButton(buttonName);
-    }
-    action();
+  const toggleTokenAddressPopup = () => {
+    setIsTokenAddressPopupOpen((prev) => !prev);
   };
 
   return (
     <main className="font-sans bg-[#0c1526] md:bg-gradient-to-l from-[#0c1526] via-[#2f1136] to-[#0c1526] min-h-screen w-full py-5">
-      {/* Header */}
       <div className="flex justify-center items-center">
-        <div className="flex items-center">
-          <Image
-            src={layerswapLogo}
-            alt="layer"
-            height={80}
-            width={80}
-            className="h-[50px] w-[50px] md:h-16 md:w-16"
-          />
-          <h2 className="text-[#e5e7eb] font-semibold tracking-wide text-lg md:text-2xl">
-            Layerswap
-          </h2>
-        </div>
+        <SubpageHeader />
+
         <div className="md:hidden relative left-[70px] flex space-x-5 text-[19px] text-white opacity-80">
           <button
             type="button"
@@ -194,7 +166,7 @@ const LayerswapAppContent = () => {
         <form
           onClick={handleSubmit}
           ref={formRef}
-          className="md:bg-[#0c1526] w-full p-6 rounded-md mt-5"
+          className="md:bg-[#0c1526] w-full p-6 rounded-md mt-5 h-[650px]"
         >
           {/* Desktop navigation */}
           <section className="hidden md:flex space-x-5 pb-4 text-[21px] justify-end text-white text-opacity-80">
@@ -398,7 +370,9 @@ const LayerswapAppContent = () => {
 export default function LayerswapAppPage() {
   return (
     <TokenProvider>
-      <LayerswapAppContent />
+      <ButtonProvider>
+        <LayerswapAppContent />
+      </ButtonProvider>
     </TokenProvider>
   );
 }
