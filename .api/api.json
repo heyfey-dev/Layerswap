@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "apis": [
+    {
+      "identifier": "layerswapapi",
+      "source": "@layerswapapi/v2.0#4acau21m02dpzad",
+      "integrity": "sha512-V0HEkl94VHUnPyyv1LxKK211qkKZ1xL/8Ruk6cUHyA/8o97sjvI451DnqH5UeyAB5cC3b07AH3an4YNGTYyuaw==",
+      "installerVersion": "6.1.2"
+    }
+  ]
+}

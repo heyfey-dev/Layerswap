@@ -9,7 +9,7 @@ const WalletModalCard = () => {
   ];
 
   return (
-    <div className="bg-[#0f192e] absolute right-5 top-[11%] p-5 rounded-lg w-44 animate-slideDown">
+    <div className="bg-[#0f192e] absolute right-5 top-[8%] md:top-[11%] p-5 rounded-lg w-44 animate-slideDown">
       {networks.map((network, index) => (
         <button
           key={network.name}
