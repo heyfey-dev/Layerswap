@@ -32,12 +32,9 @@ const TransfersPageContent = () => {
       <div className="container mx-auto md:w-[35%] relative space-y-5">
         <div className="md:bg-[#0c1526] w-full p-6 rounded-md mt-5 h-[600px] flex flex-col">
           <div className="flex items-center justify-between mb-1">
-            <Link href="/subpage" passHref>
-              <a>
-                <FaArrowLeft className="text-lg text-white text-opacity-80" />
-              </a>
+            <Link href="/subpage">
+              <FaArrowLeft className="text-lg text-white text-opacity-80" />
             </Link>
-
             <div className="space-x-5 text-[21px] text-white text-opacity-80">
               <button
                 onClick={() => handleButtonClick("wallet", toggleWalletModal)}
@@ -75,10 +72,10 @@ const TransfersPageContent = () => {
               </button>
             </div>
           </div>
-          <p>It&apos;s empty here</p>
+
           <div className="flex flex-col items-center justify-center space-y-3 flex-grow">
             <FaRegFileAlt className="text-9xl text-white text-opacity-5" />
-            <p className="text-white font-semibold text-lg">It's empty here</p>
+            <p className="text-white font-semibold text-lg">It&apos;s empty here</p>
             <div>
               <p className="text-white text-center font-semibold">
                 You can find all your transactions by searching
@@ -87,8 +84,11 @@ const TransfersPageContent = () => {
                 with address in
               </p>
               <p className="text-white text-center font-semibold">
-                <Link href="/subpage" passHref>
-                  <a className="underline underline-offset-1">Layerswap Explorer</a>
+                <Link
+                  href={"/subpage"}
+                  className="underline underline-offset-1"
+                >
+                  Layerswap Explorer
                 </Link>
               </p>
             </div>
@@ -109,21 +109,21 @@ const TransfersPageContent = () => {
             history and more
           </p>
         </div>
-      </div>
 
-      {isWalletModalOpen && <WalletModalCard onClose={toggleWalletModal} />}
-      {isHelpChatModalOpen && <HelpChatModal onClose={toggleHelpChatModal} />}
-      <NavbarModal isOpen={isModalOpen} onClose={onClose} />
+        {isWalletModalOpen && <WalletModalCard onClose={toggleWalletModal} />}
+        {isHelpChatModalOpen && <HelpChatModal onClose={toggleHelpChatModal} />}
+        <NavbarModal isOpen={isModalOpen} onClose={onClose} />
+      </div>
 
       <Footer />
     </section>
   );
 };
 
-const TransfersPage = () => (
+const TransfersSubPage = () => (
   <ButtonProvider>
     <TransfersPageContent />
   </ButtonProvider>
 );
 
-export default TransfersPage;
+export default TransfersSubPage;
