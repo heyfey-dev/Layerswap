@@ -1,11 +1,29 @@
+'use client'
+
 import React from "react";
 import { BiCommentDetail } from "react-icons/bi";
 import { FaArrowLeft, FaBars, FaWallet } from "react-icons/fa6";
 import { Footer } from "../../components/Footer";
 import SubpageHeader from "../../components/SubpageHeader";
 import Link from "next/link";
+import { ButtonProvider, useButtonContext } from "../../context/ButtonContext";
+import NavbarModal from "../../components/NavbarModal";
+import WalletModalCard from "../../components/WalletModal";
+import HelpChatModal from "../../components/HelpChatModal";
 
-const CampaignsSubpage = () => {
+const CampaignsPageContent = () => {
+  const {
+    isModalOpen,
+    setModalOpen,
+    isWalletModalOpen,
+    isHelpChatModalOpen,
+    focusedButton,
+    toggleWalletModal,
+    toggleHelpChatModal,
+    onClose,
+    handleButtonClick,
+  } = useButtonContext();
+
   return (
     <section className="font-sans bg-[#0c1526] md:bg-gradient-to-l from-[#0c1526] via-[#2f1136] to-[#0c1526] min-h-screen w-full py-5">
       <SubpageHeader />
@@ -17,13 +35,38 @@ const CampaignsSubpage = () => {
               <FaArrowLeft className="text-lg text-white text-opacity-80" />
             </Link>
             <div className="space-x-5 text-[21px] text-white text-opacity-80">
-              <button>
+              <button
+                onClick={() => handleButtonClick("wallet", toggleWalletModal)}
+                className={`hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200 ${
+                  focusedButton === "wallet"
+                    ? "bg-[#1c2d4a] ring-2 ring-[#e32474]"
+                    : ""
+                }`}
+              >
                 <FaWallet />
               </button>
-              <button>
+              <button
+                onClick={() =>
+                  handleButtonClick("helpChat", toggleHelpChatModal)
+                }
+                className={`hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200 ${
+                  focusedButton === "helpChat"
+                    ? "bg-[#1c2d4a] ring-2 ring-[#e32474]"
+                    : ""
+                }`}
+              >
                 <BiCommentDetail />
               </button>
-              <button>
+              <button
+                onClick={() =>
+                  handleButtonClick("menu", () => setModalOpen(true))
+                }
+                className={`hover:bg-[#1c2d4a] outline-none p-2 rounded-md transition-colors duration-200 ${
+                  focusedButton === "menu"
+                    ? "bg-[#1c2d4a] ring-2 ring-[#e32474]"
+                    : ""
+                }`}
+              >
                 <FaBars />
               </button>
             </div>
@@ -60,6 +103,10 @@ const CampaignsSubpage = () => {
             ))}
           </div>
         </div>
+
+        {isWalletModalOpen && <WalletModalCard onClose={toggleWalletModal} />}
+        {isHelpChatModalOpen && <HelpChatModal onClose={toggleHelpChatModal} />}
+        <NavbarModal isOpen={isModalOpen} onClose={onClose} />
       </div>
 
       <Footer />
@@ -67,4 +114,10 @@ const CampaignsSubpage = () => {
   );
 };
 
-export default CampaignsSubpage;
+const CampaignsSubPage = () => (
+  <ButtonProvider>
+    <CampaignsPageContent />
+  </ButtonProvider>
+);
+
+export default CampaignsSubPage;

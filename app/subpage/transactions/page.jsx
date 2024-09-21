@@ -109,21 +109,21 @@ const TransfersPageContent = () => {
             history and more
           </p>
         </div>
-      </div>
 
-      {isWalletModalOpen && <WalletModalCard onClose={toggleWalletModal} />}
-      {isHelpChatModalOpen && <HelpChatModal onClose={toggleHelpChatModal} />}
-      <NavbarModal isOpen={isModalOpen} onClose={onClose} />
+        {isWalletModalOpen && <WalletModalCard onClose={toggleWalletModal} />}
+        {isHelpChatModalOpen && <HelpChatModal onClose={toggleHelpChatModal} />}
+        <NavbarModal isOpen={isModalOpen} onClose={onClose} />
+      </div>
 
       <Footer />
     </section>
   );
 };
 
-const TransfersPage = () => (
+const TransfersSubPage = () => (
   <ButtonProvider>
     <TransfersPageContent />
   </ButtonProvider>
 );
 
-export default TransfersPage;
+export default TransfersSubPage;
