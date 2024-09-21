@@ -16,7 +16,6 @@ const HelpChatModal = () => {
 
       {/* Content container */}
       <div className="absolute inset-0 text-white flex flex-col">
-        {/* Scrollable content container */}
         <div className="flex-1 overflow-y-auto">
           <div className="p-4">
             {/* Header */}

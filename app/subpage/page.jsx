@@ -18,6 +18,7 @@ import { timeStringToSeconds } from "../utils";
 import SubpageHeader from "../components/SubpageHeader";
 import { ButtonProvider, useButtonContext } from "../context/ButtonContext";
 import TokenAssetsDropdown from "../components/TokenAssetsDropdown";
+import TransferViaWalletPopup from "../components/TransferViaWalletPopup";
 
 const LayerswapAppContent = () => {
   const {
@@ -368,7 +369,8 @@ const LayerswapAppContent = () => {
             Select source
           </button>
         </form>
-
+        <TransferViaWalletPopup />
+          
         {/* Render HelpChatModal outside the form */}
         {isHelpChatModalOpen && <HelpChatModel onClose={toggleHelpChatModal} />}
 
