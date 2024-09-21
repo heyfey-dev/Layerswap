@@ -11,7 +11,6 @@ import { exchangeTokens, networkTokens, topTokens } from "../constants/tokens";
 import { TokenSearchPopup } from "../components/TokenSearchPopup";
 import NavbarModal from "../components/NavbarModal";
 import { TokenProvider, useTokenContext } from "../context/TokenContext";
-import { fetchTokenInfo } from "../api/tokens";
 import WalletModalCard from "../components/WalletModal";
 import HelpChatModel from "../components/HelpChatModal";
 import TokenAddressPopup from "../components/TokenAddressPopup";

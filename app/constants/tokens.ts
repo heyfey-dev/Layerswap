@@ -3,6 +3,16 @@ interface Token {
   address: string;
   imageUrl?: string;
   network?: string;
+  type?:
+    | "evm"
+    | "starknet"
+    | "solana"
+    | "cosmos"
+    | "starkex"
+    | "zksynclite"
+    | "ton"
+    | "paradex"
+    | "tron";
 }
 
 export const topTokens: Token[] = [
@@ -12,6 +22,7 @@ export const topTokens: Token[] = [
     address: "0x99ff5FEBFB3f9abD653864503d26010d98e51bd0",
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Farbitrum_mainnet.png&w=48&q=75",
+    type: "evm",
   },
   {
     token: "Ethereum",
@@ -19,6 +30,7 @@ export const topTokens: Token[] = [
     address: "0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72",
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fethereum_mainnet.png&w=48&q=75",
+    type: "evm",
   },
   {
     token: "Starknet",
@@ -26,6 +38,7 @@ export const topTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fstarknet_mainnet.png&w=48&q=75",
     network: "STARKNET_MAINNET",
+    type: "starknet",
   },
   {
     token: "Optimism",
@@ -33,6 +46,7 @@ export const topTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Foptimism_mainnet.png&w=48&q=75",
     network: "OPTIMISM_MAINNET",
+    type: "evm",
   },
   {
     token: "zKSync Era",
@@ -41,6 +55,7 @@ export const topTokens: Token[] = [
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fzksyncera_mainnet.png&w=48&q=75",
 
     network: "ZKSYNCERA_MAINNET",
+    type: "evm",
   },
 ];
 
@@ -51,6 +66,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Flinea_mainnet.png&w=48&q=75",
     network: "LINEA_MAINNET",
+    type: "evm",
   },
   {
     token: "BSC",
@@ -58,27 +74,31 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fbsc_mainnet.png&w=48&q=75",
     network: "BSC_MAINNET",
+    type: "evm",
   },
   {
     token: "Polygon",
     address: "0x455e53CBB86018Ac2B8092FdCd39d8444aFFC3F6",
     imageUrl:
-      "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fsolana_mainnet.png&w=48&q=75",
-    network: "SOLANA_MAINNET",
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/polygon_mainnet.png",
+    network: "POLYGON_MAINNET",
+    type: "evm",
   },
   {
     token: "Avalanche",
     address: "0x8965349fb649A33a30cbFDa057D8eC2C48AbE2A2",
     imageUrl:
-      "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Favax_mainnet.png&w=48&q=75",
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/avax_mainnet.png",
     network: "AVAX_MAINNET",
+    type: "evm",
   },
   {
     token: "zkSync Lite",
     address: "0x222A9258c045EEF4E3Cf1Ca40D0C15526C69d1c2",
     imageUrl:
-      "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fzksync_mainnet.png&w=48&q=75",
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/zksync_mainnet.png",
     network: "ZKSYNC_MAINNET",
+    type: "zksynclite",
   },
   {
     token: "Arbitrum Nova",
@@ -86,6 +106,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Farbitrumnova_mainnet.png&w=48&q=75",
     network: "ARBITRUMNOVA_MAINNET",
+    type: "evm",
   },
   {
     token: "Loopring",
@@ -93,6 +114,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Floopring_mainnet.png&w=48&q=75",
     network: "LOOPRING_MAINNET",
+    type: "zksynclite",
   },
   {
     token: "ImmutableX",
@@ -100,6 +122,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fimmutablex_mainnet.png&w=48&q=75",
     network: "IMMUTABLEX_MAINNET",
+    type: "starkex",
   },
   {
     token: "Base",
@@ -107,6 +130,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fbase_mainnet.png&w=48&q=75",
     network: "BASE_MAINNET",
+    type: "evm",
   },
   {
     token: "Zora",
@@ -114,11 +138,14 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fzora_mainnet.png&w=48&q=75",
     network: "ZORA_MAINNET",
+    type: "evm",
   },
   {
     token: "Ronin",
     address: "0x743Df637d19EdaF775Dbb86083292C0fD4f7BF19",
-    imageUrl: "",
+    imageUrl:
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/ronin_mainnet.png",
+    type: "evm",
   },
   {
     token: "Blast",
@@ -126,6 +153,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fblast_mainnet.png&w=48&q=75",
     network: "BLAST_MAINNET",
+    type: "evm",
   },
   {
     token: "Mantle",
@@ -133,6 +161,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fmantle_mainnet.png&w=48&q=75",
     network: "MANTLE_MAINNET",
+    type: "evm",
   },
   {
     token: "Manta Pacific",
@@ -140,6 +169,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fmanta_mainnet.png&w=48&q=75",
     network: "MANTA_MAINNET",
+    type: "evm",
   },
 
   {
@@ -148,6 +178,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fopbnb_mainnet.png&w=48&q=75",
     network: "OPBNB_MAINNET",
+    type: "evm",
   },
   {
     token: "Nahmii",
@@ -155,6 +186,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fnahmii_mainnet.png&w=48&q=75",
     network: "NAHMII_MAINNET",
+    type: "evm",
   },
   {
     token: "Mode",
@@ -162,6 +194,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fmode_mainnet.png&w=48&q=75",
     network: "MODE_MAINNET",
+    type: "evm",
   },
   {
     token: "OKT Chain (OKTC)",
@@ -169,6 +202,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fokc_mainnet.png&w=48&q=75",
     network: "OKC_MAINNET",
+    type: "evm",
   },
   {
     token: "Public Goods Network",
@@ -176,6 +210,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fpgn_mainnet.png&w=48&q=75",
     network: "PGN_MAINNET",
+    type: "evm",
   },
   {
     token: "Astar zkEVM",
@@ -183,6 +218,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fastarzk_mainnet.png&w=48&q=75",
     network: "ASTARZK_MAINNET",
+    type: "evm",
   },
   {
     token: "X Layer",
@@ -190,6 +226,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fxlayer_mainnet.png&w=48&q=75",
     network: "XLAYER_MAINNET",
+    type: "evm",
   },
   {
     token: "Redstone",
@@ -197,6 +234,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fredstone_mainnet.png&w=48&q=75",
     network: "REDSTONE_MAINNET",
+    type: "evm",
   },
   {
     token: "Taiko",
@@ -204,6 +242,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Ftaiko_mainnet.png&w=48&q=75",
     network: "TAIKO_MAINNET",
+    type: "evm",
   },
   {
     token: "Kroma",
@@ -211,6 +250,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fkroma_mainnet.png&w=48&q=75",
     network: "KROMA_MAINNET",
+    type: "evm",
   },
   {
     token: "Zetachain",
@@ -218,6 +258,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fzetachain_mainnet.png&w=48&q=75",
     network: "ZETACHAIN_MAINNET",
+    type: "evm",
   },
   {
     token: "Bob",
@@ -225,6 +266,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fbob_mainnet.png&w=48&q=75",
     network: "BOB_MAINNET",
+    type: "evm",
   },
   {
     token: "Mint",
@@ -232,6 +274,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fmint_mainnet.png&w=48&q=75",
     network: "MINT_MAINNET",
+    type: "evm",
   },
   {
     token: "Scroll",
@@ -239,6 +282,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fscroll_mainnet.png&w=48&q=75",
     network: "SCROLL_MAINNET",
+    type: "evm",
   },
   {
     token: "Gnosis",
@@ -246,6 +290,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fgnosis_mainnet.png&w=48&q=75",
     network: "GNOSIS_MAINNET",
+    type: "evm",
   },
   {
     token: "Immutable zkEVM",
@@ -253,6 +298,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fimmutablezk_mainnet.png&w=48&q=75",
     network: "IMMUTABLEZK_MAINNET",
+    type: "evm",
   },
   {
     token: "Fuse",
@@ -260,6 +306,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Ffuse_mainnet.png&w=48&q=75",
     network: "FUSE_MAINNET",
+    type: "evm",
   },
   {
     token: "Gravity",
@@ -267,21 +314,29 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fgravity_mainnet.png&w=48&q=75",
     network: "GRAVITY_MAINNET",
+    type: "evm",
   },
   {
     token: "Solana",
     address: "0x97B41a4af406971F19e9E4f97567C5FfF9784c65",
     network: "SOLANA_MAINNET",
+    type: "solana",
   },
   {
     token: "Polygon zkEVM",
     address: "0xc3Ae21da37d7F200a85f007124854B933d8638f4",
-    network: "POLYGON_MAINNET",
+    imageUrl:
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/polygonzk_mainnet.png",
+    network: "POLYGONZK_MAINNET",
+    type: "evm",
   },
   {
     token: "Tron",
     address: "0xaD5Fe5B0B8eC8fF4565204990E4405B2Da117d8e",
     network: "TRON_MAINNET",
+    imageUrl:
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/tron_mainnet.png",
+    type: "tron",
   },
   {
     token: "Paradex",
@@ -289,6 +344,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fparadex_mainnet.png&w=48&q=75",
     network: "PARADEX_MAINNET",
+    type: "starknet",
   },
   {
     token: "TON",
@@ -296,6 +352,7 @@ export const networkTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fton_mainnet.png&w=48&q=75",
     network: "TON_MAINNET",
+    type: "ton",
   },
 ];
 
@@ -342,12 +399,14 @@ export const exchangeTokens: Token[] = [
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fhuobi.png&w=48&q=75",
   },
+
   {
     token: "Bitfinex",
     address: "0xD64fa1F69f578d66967c475969B30aa327D20C61",
     imageUrl:
       "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fbitfinex.png&w=48&q=75",
   },
+
   {
     token: "Crypto.com Exchange",
     address: "0x4f30b8530C3CB693E4F36a48b1999F32b872CdFF",
