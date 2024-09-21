@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { BiCommentDetail } from "react-icons/bi";
-import { FaBars, FaChevronDown, FaWallet } from "react-icons/fa6";
+import { FaBars, FaWallet, FaChevronDown } from "react-icons/fa6";
 import { IoSwapVertical } from "react-icons/io5";
 import { Footer } from "../components/Footer";
 import { exchangeTokens, networkTokens, topTokens } from "../constants/tokens";
@@ -17,6 +17,7 @@ import axios from "axios";
 import { timeStringToSeconds } from "../utils";
 import SubpageHeader from "../components/SubpageHeader";
 import { ButtonProvider, useButtonContext } from "../context/ButtonContext";
+import TokenAssetsDropdown from "../components/TokenAssetsDropdown";
 
 const LayerswapAppContent = () => {
   const {
@@ -48,6 +49,14 @@ const LayerswapAppContent = () => {
   const [quote, setQuote] = useState(null);
 
   const [isTokenAddressPopupOpen, setIsTokenAddressPopupOpen] = useState(false);
+
+  const [showFromAssetDropdown, setShowFromAssetDropdown] = useState(false);
+  const [showToAssetDropdown, setShowToAssetDropdown] = useState(false);
+
+  const toggleFromAssetDropdown = () =>
+    setShowFromAssetDropdown(!showFromAssetDropdown);
+  const toggleToAssetDropdown = () =>
+    setShowToAssetDropdown(!showToAssetDropdown);
 
   const toggleFromSearch = () => setIsFromSearchOpen(true);
   const toggleToSearch = () => setIsToSearchOpen(true);
@@ -133,7 +142,7 @@ const LayerswapAppContent = () => {
   };
 
   return (
-    <main className="font-sans bg-[#0c1526] md:bg-gradient-to-l from-[#0c1526] via-[#2f1136] to-[#0c1526] min-h-screen w-full py-5">
+    <main className="font-sans bg-[#162b52] md:bg-gradient-to-l from-[#0c1526] via-[#2f1136] to-[#0c1526] min-h-screen w-full py-5">
       <div className="flex justify-center items-center">
         <SubpageHeader />
 
@@ -226,9 +235,22 @@ const LayerswapAppContent = () => {
                       <FaChevronDown className="text-[15px]" />
                     </div>
                   </div>
-                  <p className="flex items-center w-[30%] bg-[#14213d] border-white border border-opacity-5 py-3 px-2 rounded-md text-white text-sm md:text-base opacity-60">
-                    {fromTokenInfo ? fromTokenInfo.symbol : "Asset"}
-                  </p>
+                  <div
+                    className="relative w-[30%] cursor-pointer"
+                    onClick={toggleFromAssetDropdown}
+                  >
+                    <p className="flex items-center w-full bg-[#14213d] border-white border border-opacity-5 py-3 px-2 rounded-md text-white text-sm md:text-base opacity-60">
+                      {fromTokenInfo ? fromTokenInfo.symbol : "Asset"}
+                      <FaChevronDown className="ml-auto text-[15px]" />
+                    </p>
+                    {showFromAssetDropdown && (
+                      <div className="absolute top-full left-0 w-full z-10">
+                        <TokenAssetsDropdown
+                          onSelect={() => setShowFromAssetDropdown(false)}
+                        />
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
 
@@ -258,9 +280,22 @@ const LayerswapAppContent = () => {
                       <FaChevronDown className="text-[15px]" />
                     </div>
                   </div>
-                  <p className="flex items-center w-[30%] bg-[#14213d] border-white border border-opacity-5 py-3 px-2 rounded-md text-white text-sm md:text-base opacity-60">
-                    {toTokenInfo ? toTokenInfo.symbol : "Asset"}
-                  </p>
+                  <div
+                    className="relative w-[30%] cursor-pointer"
+                    onClick={toggleToAssetDropdown}
+                  >
+                    <p className="flex items-center w-full bg-[#14213d] border-white border border-opacity-5 py-3 px-2 rounded-md text-white text-sm md:text-base opacity-60">
+                      {toTokenInfo ? toTokenInfo.symbol : "Asset"}
+                      <FaChevronDown className="ml-auto text-[15px]" />
+                    </p>
+                    {showToAssetDropdown && (
+                      <div className="absolute top-full left-0 w-full z-10">
+                        <TokenAssetsDropdown
+                          onSelect={() => setShowToAssetDropdown(false)}
+                        />
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
