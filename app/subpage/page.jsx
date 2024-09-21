@@ -369,6 +369,7 @@ const LayerswapAppContent = () => {
             Select source
           </button>
         </form>
+        
         <TransferViaWalletPopup />
           
         {/* Render HelpChatModal outside the form */}
