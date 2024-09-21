@@ -78,7 +78,7 @@ const TransfersPageContent = () => {
           <p>It&apos;s empty here</p>
           <div className="flex flex-col items-center justify-center space-y-3 flex-grow">
             <FaRegFileAlt className="text-9xl text-white text-opacity-5" />
-            <p className="text-white font-semibold text-lg">It&apos;s empty here</p>
+            <p className="text-white font-semibold text-lg">It's empty here</p>
             <div>
               <p className="text-white text-center font-semibold">
                 You can find all your transactions by searching
