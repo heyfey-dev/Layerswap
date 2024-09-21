@@ -26,9 +26,10 @@ const TokenAssetsDropdown = () => {
   ];
 
   return (
-    <div className="bg-[#0c1526] border border-white border-opacity-5 absolute right-5 top-[30%] md:top-[50%] p-5 rounded-lg w-[150px] animate-slideDown flex flex-col items-center z-50">
+    <div className="bg-[#0c1526] border border-white border-opacity-5 absolute right-[1px] top-[54px] md:top-[54px] p-5 rounded-lg w-[150px] animate-slideDown flex flex-col items-center z-50">
       {cryptoData.map((crypto, index) => (
         <button
+
           key={crypto.name}
           className="relative flex items-center justify-center w-full mb-3 last:mb-0 rounded-md p-2 transition-colors duration-200 group"
         >

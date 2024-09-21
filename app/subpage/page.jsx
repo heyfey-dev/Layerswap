@@ -244,7 +244,7 @@ const LayerswapAppContent = () => {
                       <FaChevronDown className="ml-auto text-[15px]" />
                     </p>
                     {showFromAssetDropdown && (
-                      <div className="absolute top-full left-0 w-full z-10">
+                      <div>
                         <TokenAssetsDropdown
                           onSelect={() => setShowFromAssetDropdown(false)}
                         />
@@ -289,7 +289,7 @@ const LayerswapAppContent = () => {
                       <FaChevronDown className="ml-auto text-[15px]" />
                     </p>
                     {showToAssetDropdown && (
-                      <div className="absolute top-full left-0 w-full z-10">
+                      <div>
                         <TokenAssetsDropdown
                           onSelect={() => setShowToAssetDropdown(false)}
                         />
