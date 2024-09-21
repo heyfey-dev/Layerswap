@@ -32,9 +32,12 @@ const TransfersPageContent = () => {
       <div className="container mx-auto md:w-[35%] relative space-y-5">
         <div className="md:bg-[#0c1526] w-full p-6 rounded-md mt-5 h-[600px] flex flex-col">
           <div className="flex items-center justify-between mb-1">
-            <Link href="/subpage">
-              <FaArrowLeft className="text-lg text-white text-opacity-80" />
-            </Link>
+          <Link href="/subpage" passHref>
+               <a>
+                <FaArrowLeft className="text-lg text-white text-opacity-80" />
+               </a>
+          </Link>
+
             <div className="space-x-5 text-[21px] text-white text-opacity-80">
               <button
                 onClick={() => handleButtonClick("wallet", toggleWalletModal)}
@@ -84,12 +87,10 @@ const TransfersPageContent = () => {
                 with address in
               </p>
               <p className="text-white text-center font-semibold">
-                <Link
-                  href={"/subpage"}
-                  className="underline underline-offset-1"
-                >
-                  Layerswap Explorer
-                </Link>
+              <Link href="/subpage" passHref>
+                   <a className="underline underline-offset-1">Layerswap Explorer</a>
+              </Link>
+
               </p>
             </div>
           </div>
