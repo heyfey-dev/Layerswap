@@ -90,7 +90,6 @@ const NavbarModal = ({ isOpen, onClose }) => {
                     href={"/subpage/transactions"}
                     className="flex justify-between items-center p-3 cursor-pointer hover:bg-[#1c2e5a] transition-colors duration-200"
                   >
-
                     <div className="flex items-center space-x-3">
                       <GrDocumentTransfer className="font-bold" />
                       <span className="text-sm font-semibold">Transfers</span>
