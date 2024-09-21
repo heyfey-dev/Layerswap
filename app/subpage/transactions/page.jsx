@@ -75,6 +75,8 @@ const TransfersPageContent = () => {
               </button>
             </div>
           </div>
+          <p>It&apos;s empty here</p>
+
           <div className="flex flex-col items-center justify-center space-y-3 flex-grow">
             <FaRegFileAlt className="text-9xl text-white text-opacity-5" />
             <p className="text-white font-semibold text-lg">It's empty here</p>
