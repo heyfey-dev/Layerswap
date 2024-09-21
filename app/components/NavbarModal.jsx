@@ -23,6 +23,7 @@ import { PiSignInBold } from "react-icons/pi";
 import { useAppKit } from "@reown/appkit/react";
 import { useAccount, useConnect } from "wagmi";
 import Image from "next/image";
+import Link from "next/link";
 
 const NavbarModal = ({ isOpen, onClose }) => {
   const { open } = useAppKit();
@@ -85,21 +86,27 @@ const NavbarModal = ({ isOpen, onClose }) => {
               <div className="space-y-4 p-4">
                 <div className="bg-[#111c36] rounded">
                   {/* transfers & campaigns*/}
-                  <div className="flex justify-between items-center p-3 cursor-pointer hover:bg-[#1c2e5a] transition-colors duration-200">
+                  <Link
+                    href={"/subpage/transactions"}
+                    className="flex justify-between items-center p-3 cursor-pointer hover:bg-[#1c2e5a] transition-colors duration-200"
+                  >
                     <div className="flex items-center space-x-3">
                       <GrDocumentTransfer className="font-bold" />
                       <span className="text-sm font-semibold">Transfers</span>
                     </div>
                     <AiOutlineRight className="text-sm" />
-                  </div>
+                  </Link>
                   <div className="border-t border-[#2C3A57]"></div>
-                  <div className="flex justify-between items-center p-3 cursor-pointer hover:bg-[#1c2e5a] transition-colors duration-200">
+                  <Link
+                    href={"/subpage/campaigns"}
+                    className="flex justify-between items-center p-3 cursor-pointer hover:bg-[#1c2e5a] transition-colors duration-200"
+                  >
                     <div className="flex items-center space-x-3">
                       <FaGift />
                       <span className="text-sm font-semibold">Campaigns</span>
                     </div>
                     <AiOutlineRight className="text-sm" />
-                  </div>
+                  </Link>
                 </div>
 
                 {/* help, docs of users, docs of partners*/}
