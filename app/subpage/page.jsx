@@ -41,6 +41,7 @@ const LayerswapAppContent = () => {
 
   const [fromTokenInfo, setFromTokenInfo] = useState(null);
   const [toTokenInfo, setToTokenInfo] = useState(null);
+  const [fromAssets, setFromAssets] = useState([]);
   const formRef = useRef(null);
 
   const [minLimit, setMinLimit] = useState(null);
@@ -64,6 +65,30 @@ const LayerswapAppContent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  useEffect(() => {
+    const fetchFromAssets = async () => {
+      try {
+        if (!selectedFromToken.type) return;
+        const response = await axios.get(
+          `https://api.layerswap.io/api/v2/networks?network_types=${selectedFromToken.type}`,
+          {
+            headers: {
+              "X-LS-APIKEY":
+                "NDBxG+aon6WlbgIA2LfwmcbLU52qUL9qTnztTuTRPNSohf/VnxXpRaJlA5uLSQVqP8YGIiy/0mz+mMeZhLY4/Q",
+              Accept: "application/json",
+            },
+          }
+        );
+
+        if (response.status === 200) {
+          console.log(response.data.data);
+        }
+      } catch (error) {}
+    };
+
+    fetchFromAssets();
+  });
 
   useEffect(() => {
     const fetchLimits = async () => {
@@ -368,9 +393,9 @@ const LayerswapAppContent = () => {
             Select source
           </button>
         </form>
-        
+
         <TransferViaWalletPopup />
-          
+
         {/* Render HelpChatModal outside the form */}
         {isHelpChatModalOpen && <HelpChatModel onClose={toggleHelpChatModal} />}
 
