@@ -37,7 +37,7 @@ export default function Home() {
                 <FaArrowRight className="text-sm absolute transition-transform duration-700 ease-in-out translate-x-[-100%] group-hover:translate-x-0 group-hover:opacity-100 opacity-0" />
               </div>
             </Link>
-            <Link href={"/learn-more"} className="font-semibold">
+            <Link href={"/subpage"} className="font-semibold">
               Learn more
             </Link>
           </div>
