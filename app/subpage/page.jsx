@@ -9,7 +9,6 @@ import { exchangeTokens, networkTokens, topTokens } from "../constants/tokens";
 import { TokenSearchPopup } from "../components/TokenSearchPopup";
 import NavbarModal from "../components/NavbarModal";
 import { TokenProvider, useTokenContext } from "../context/TokenContext";
-import { fetchTokenInfo } from "../api/tokens";
 import WalletModalCard from "../components/WalletModal";
 import HelpChatModel from "../components/HelpChatModal";
 import TokenAddressPopup from "../components/TokenAddressPopup";
@@ -42,6 +41,9 @@ const LayerswapAppContent = () => {
 
   const [fromTokenInfo, setFromTokenInfo] = useState(null);
   const [toTokenInfo, setToTokenInfo] = useState(null);
+  const [fromAssets, setFromAssets] = useState([]);
+  const [toAssets, setToAssets] = useState([]);
+
   const formRef = useRef(null);
 
   const [minLimit, setMinLimit] = useState(null);
@@ -53,6 +55,9 @@ const LayerswapAppContent = () => {
 
   const [showFromAssetDropdown, setShowFromAssetDropdown] = useState(false);
   const [showToAssetDropdown, setShowToAssetDropdown] = useState(false);
+  const [selectedFromAsset, setSelectedFromAsset] = useState(null);
+  const [selectedToAsset, setSelectedToAsset] = useState(null);
+  const [error, setError] = useState(null);
 
   const toggleFromAssetDropdown = () =>
     setShowFromAssetDropdown(!showFromAssetDropdown);
@@ -66,17 +71,27 @@ const LayerswapAppContent = () => {
     e.preventDefault();
   };
 
-  useEffect(() => {
-    const fetchLimits = async () => {
-      if (!selectedFromToken || !selectedToToken) {
-        setMinLimit(null);
-        setMaxLimit(null);
-        return;
-      }
+  const handleFromAssetSelect = (asset) => {
+    console.log(asset);
+    setSelectedFromAsset(asset); // Update the selected asset
+    setShowToAssetDropdown(false); // Close the dropdown
+  };
 
+  const handleToAssetSelect = (asset) => {
+    console.log(asset);
+    setSelectedToAsset(asset); // Update the selected asset
+    setShowToAssetDropdown(false); // Close the dropdown
+  };
+
+  useEffect(() => {
+    const fetchFromAssets = async () => {
       try {
+        if (!selectedFromToken.type) {
+          setFromAssets([]);
+          return;
+        }
         const response = await axios.get(
-          `https://api.layerswap.io/api/v2/limits?source_network=${selectedFromToken.network}&source_token=ETH&destination_network=${selectedToToken.network}&destination_token=ETH`,
+          `https://api.layerswap.io/api/v2/networks?network_types=${selectedFromToken.type}`,
           {
             headers: {
               "X-LS-APIKEY":
@@ -85,41 +100,130 @@ const LayerswapAppContent = () => {
             },
           }
         );
+
         if (response.status === 200) {
-          setMinLimit(response.data.data.min_amount);
-          setMaxLimit(response.data.data.max_amount);
+          const x = response.data.data;
+          const sth = x.find(
+            (network) => network.display_name === selectedFromToken.token
+          );
+          setFromAssets(sth.tokens);
         }
-      } catch (error) {
-        console.error("Error fetching limits", error);
-      }
+      } catch (error) {}
     };
 
-    fetchLimits();
-  }, [selectedFromToken, selectedToToken]);
+    fetchFromAssets();
+  }, [selectedFromToken]);
 
-  const fetchTransferDetails = async () => {
-    if (
-      !amount ||
-      amount < minLimit ||
-      amount > maxLimit ||
-      !minLimit ||
-      !maxLimit
-    ) {
-      console.log("Fill required fields or check the amount limit");
-      return;
-    }
+  useEffect(() => {
+    const fetchToAssets = async () => {
+      try {
+        if (!selectedToToken.type) {
+          setToAssets([]);
+          return;
+        }
+        const response = await axios.get(
+          `https://api.layerswap.io/api/v2/networks?network_types=${selectedToToken.type}`,
+          {
+            headers: {
+              "X-LS-APIKEY":
+                "NDBxG+aon6WlbgIA2LfwmcbLU52qUL9qTnztTuTRPNSohf/VnxXpRaJlA5uLSQVqP8YGIiy/0mz+mMeZhLY4/Q",
+              Accept: "application/json",
+            },
+          }
+        );
 
-    try {
-      const response = await axios.get(
-        `https://api.layerswap.io/api/v2/quote?source_network=${selectedFromToken.network}&source_token=ETH&destination_network=${selectedToToken.network}&destination_token=ETH&amount=${amount}`,
-        {
+        if (response.status === 200) {
+          const x = response.data.data;
+          const sth = x.find(
+            (network) => network.display_name === selectedToToken.token
+          );
+          setToAssets(sth.tokens);
+        }
+      } catch (error) {}
+    };
+
+    fetchToAssets();
+  }, [selectedToToken]);
+
+  useEffect(() => {
+    const fetchLimits = async () => {
+      setError(null);
+      if (
+        !selectedFromToken ||
+        !selectedToToken ||
+        !selectedToAsset ||
+        !selectedFromAsset
+      ) {
+        setMinLimit(null);
+        setMaxLimit(null);
+        return;
+      }
+
+      try {
+        console.log(selectedFromAsset.display_asset);
+        console.log(selectedToAsset.display_asset);
+
+        const url = `https://api.layerswap.io/api/v2/limits?source_network=${
+          selectedFromToken.network
+        }&source_token=${
+          selectedFromAsset ? selectedFromAsset.display_asset : "ETH"
+        }&destination_network=${selectedToToken.network}&destination_token=${
+          selectedToAsset ? selectedToAsset.display_asset : "ETH"
+        }`;
+        console.log(url);
+        const response = await axios.get(url, {
           headers: {
             "X-LS-APIKEY":
               "NDBxG+aon6WlbgIA2LfwmcbLU52qUL9qTnztTuTRPNSohf/VnxXpRaJlA5uLSQVqP8YGIiy/0mz+mMeZhLY4/Q",
             Accept: "application/json",
           },
+        });
+        if (response.status === 200) {
+          setMinLimit(response.data.data.min_amount);
+          setMaxLimit(response.data.data.max_amount);
         }
-      );
+        if (response.status === 404) {
+          setError("Route unavailable");
+        }
+      } catch (error) {
+        setError("Route unavailable");
+      }
+    };
+
+    fetchLimits();
+  }, [selectedFromToken, selectedToToken, selectedFromAsset, selectedToAsset]);
+
+  const fetchTransferDetails = async () => {
+    if (error) return;
+    setError(null);
+
+    if (!amount || !minLimit || !maxLimit) {
+      console.log("Fill required fields or check the amount limit");
+      return;
+    }
+    if (amount < minLimit || amount > maxLimit) {
+      setError(`Max is ${maxLimit}`);
+      return;
+    }
+
+    try {
+      console.log(selectedFromAsset.display_asset);
+      console.log(selectedToAsset.display_asset);
+      const url = `https://api.layerswap.io/api/v2/quote?source_network=${
+        selectedFromToken.network
+      }&source_token=${
+        selectedFromAsset ? selectedFromAsset.display_asset : "ETH"
+      }&destination_network=${selectedToToken.network}&destination_token=${
+        selectedToAsset ? selectedToAsset.display_asset : "ETH"
+      }&amount=${amount}`;
+      console.log(url);
+      const response = await axios.get(url, {
+        headers: {
+          "X-LS-APIKEY":
+            "NDBxG+aon6WlbgIA2LfwmcbLU52qUL9qTnztTuTRPNSohf/VnxXpRaJlA5uLSQVqP8YGIiy/0mz+mMeZhLY4/Q",
+          Accept: "application/json",
+        },
+      });
 
       if (response.status === 200) {
         const quoteData = response.data.data.quote;
@@ -130,8 +234,12 @@ const LayerswapAppContent = () => {
           avgCompletionTime: Math.floor(
             timeStringToSeconds(quoteData.avg_completion_time)
           ),
+          receiveAmountUSD:
+            quoteData.receive_amount * quoteData.destination_token.price_in_usd,
         });
-        console.log(quote);
+      }
+      if (response.status === 400 || response.status === 404) {
+        setError("Route unavailable");
       }
     } catch (error) {
       console.error("Error fetching quotes", error);
@@ -247,7 +355,8 @@ const LayerswapAppContent = () => {
                     {showFromAssetDropdown && (
                       <div>
                         <TokenAssetsDropdown
-                          onSelect={() => setShowFromAssetDropdown(false)}
+                          assets={fromAssets}
+                          onSelect={handleFromAssetSelect}
                         />
                       </div>
                     )}
@@ -292,7 +401,8 @@ const LayerswapAppContent = () => {
                     {showToAssetDropdown && (
                       <div>
                         <TokenAssetsDropdown
-                          onSelect={() => setShowToAssetDropdown(false)}
+                          assets={toAssets}
+                          onSelect={handleToAssetSelect}
                         />
                       </div>
                     )}
@@ -362,16 +472,15 @@ const LayerswapAppContent = () => {
           <button
             type="button"
             className="bg-[#6e0040] w-full mt-20 md:mt-6 p-[14px] text-white text-sm md:text-base text-opacity-50 font-semibold text-center rounded-md"
-            onClick={() => {
-              fetchMinMax();
-            }}
+            // onClick={() => {
+            //   fetchMinMax();
+            // }}
           >
-            Select source
+            {error ? error : "Select source"}
           </button>
         </form>
-        
-        <TransferViaWalletPopup />
-          
+        {quote && <TransferViaWalletPopup quote={quote} />}
+
         {/* Render HelpChatModal outside the form */}
         {isHelpChatModalOpen && <HelpChatModel onClose={toggleHelpChatModal} />}
 
