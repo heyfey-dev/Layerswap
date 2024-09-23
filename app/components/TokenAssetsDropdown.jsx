@@ -2,17 +2,13 @@ import Image from "next/image";
 import React from "react";
 
 const TokenAssetsDropdown = ({ assets, onSelect }) => {
-  if (!assets || assets.length === 0) {
-    return null; // Ensure that the component renders nothing if there are no assets
-  }
-
   return (
     <div className="bg-[#0c1526] border border-white border-opacity-5 absolute right-[1px] top-[54px] md:top-[54px] p-5 rounded-lg w-[150px] animate-slideDown flex flex-col items-center z-50">
-      {assets.map((crypto) => (
+      {assets?.map((crypto, index) => (
         <button
           key={crypto.display_asset}
           className="relative flex items-center justify-center w-full mb-3 last:mb-0 rounded-md p-2 transition-colors duration-200 group"
-          onClick={() => onSelect(crypto)} // This triggers the selection
+          onClick={() => onSelect(crypto)}
         >
           <div className="absolute inset-0 rounded-md group-hover:bg-[#1c2d4a] transition-colors duration-200"></div>
           <div className="flex items-center justify-center relative z-10">
