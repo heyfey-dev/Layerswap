@@ -395,7 +395,7 @@ const LayerswapAppContent = () => {
                     onClick={toggleToAssetDropdown}
                   >
                     <p className="flex items-center w-full bg-[#14213d] border-white border border-opacity-5 py-3 px-2 rounded-md text-white text-sm md:text-base opacity-60">
-                      {selectedToAsset ? selectedToAsset.display : "Asset"}
+                      {selectedToAsset ? selectedToAsset.display_asset : "Asset"}
                       <FaChevronDown className="ml-auto text-[15px]" />
                     </p>
                     {showToAssetDropdown && (
