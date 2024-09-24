@@ -32,7 +32,7 @@ const TokenAddressPopup = ({ isOpen, onClose }) => {
             </div>
             <div className="flex justify-center">
               <div className="flex items-center space-x-5 bg-[#111c36] rounded-md py-5 px-4 w-full">
-                <div className="grid grid-cols-2 gap-y-2 gap-x-3 place-items-center">
+                <div className="grid grid-cols-2 gap-y-2 gap-x-4 md:gap-x-3 place-items-center">
                   <div className="bg-purple-600 py-2 px-3 rounded-md">
                     <GiRainbowStar className="text-white" />
                   </div>

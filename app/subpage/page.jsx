@@ -349,16 +349,14 @@ const LayerswapAppContent = () => {
                     onClick={toggleFromAssetDropdown}
                   >
                     <p className="flex items-center w-full bg-[#14213d] border-white border border-opacity-5 py-3 px-2 rounded-md text-white text-sm md:text-base opacity-60">
-                      {fromTokenInfo ? fromTokenInfo.symbol : "Asset"}
-                      <FaChevronDown className="ml-auto text-[15px]" />
+                    {selectedFromAsset ? selectedFromAsset.display_asset : "Asset"}
+                    <FaChevronDown className="ml-auto text-[15px]" />
                     </p>
                     {showFromAssetDropdown && (
-                      <div>
                         <TokenAssetsDropdown
                           assets={fromAssets}
                           onSelect={handleFromAssetSelect}
                         />
-                      </div>
                     )}
                   </div>
                 </div>
@@ -395,16 +393,14 @@ const LayerswapAppContent = () => {
                     onClick={toggleToAssetDropdown}
                   >
                     <p className="flex items-center w-full bg-[#14213d] border-white border border-opacity-5 py-3 px-2 rounded-md text-white text-sm md:text-base opacity-60">
-                      {toTokenInfo ? toTokenInfo.symbol : "Asset"}
-                      <FaChevronDown className="ml-auto text-[15px]" />
+                    {selectedToAsset ? selectedToAsset.display : "Asset"}
+                    <FaChevronDown className="ml-auto text-[15px]" />
                     </p>
                     {showToAssetDropdown && (
-                      <div>
                         <TokenAssetsDropdown
                           assets={toAssets}
                           onSelect={handleToAssetSelect}
                         />
-                      </div>
                     )}
                   </div>
                 </div>
