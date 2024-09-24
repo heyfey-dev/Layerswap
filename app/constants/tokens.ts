@@ -21,7 +21,7 @@ export const topTokens: Token[] = [
     network: "ARBITRUM_MAINNET",
     address: "0x99ff5FEBFB3f9abD653864503d26010d98e51bd0",
     imageUrl:
-      "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Farbitrum_mainnet.png&w=48&q=75",
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/arbitrum_mainnet.png",
     type: "evm",
   },
   {
@@ -29,14 +29,14 @@ export const topTokens: Token[] = [
     network: "ETHEREUM_MAINNET",
     address: "0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72",
     imageUrl:
-      "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fethereum_mainnet.png&w=48&q=75",
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/ethereum_mainnet.png",
     type: "evm",
   },
   {
     token: "Starknet",
     address: "0xCa14007Eff0dB1f8135f4C25B34De49AB0d42766",
     imageUrl:
-      "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fstarknet_mainnet.png&w=48&q=75",
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/starknet_mainnet.png",
     network: "STARKNET_MAINNET",
     type: "starknet",
   },
@@ -44,7 +44,7 @@ export const topTokens: Token[] = [
     token: "Optimism",
     address: "0xb2EA9527bF05bC3b73320a1ec18bd4F2Fe88d952",
     imageUrl:
-      "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Foptimism_mainnet.png&w=48&q=75",
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/optimism_mainnet.png",
     network: "OPTIMISM_MAINNET",
     type: "evm",
   },
@@ -52,7 +52,7 @@ export const topTokens: Token[] = [
     token: "zKSync Era",
     address: "0x8A0C816A52e71A1e9b6719580ebE754709C55198",
     imageUrl:
-      "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fzksyncera_mainnet.png&w=48&q=75",
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/zksyncera_mainnet.png",
 
     network: "ZKSYNCERA_MAINNET",
     type: "evm",
@@ -64,7 +64,7 @@ export const networkTokens: Token[] = [
     token: "Linea",
     address: "0x4F959C9968c54170b43CC0Ec09DEce5B66E12da6",
     imageUrl:
-      "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Flinea_mainnet.png&w=48&q=75",
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/linea_mainnet.png",
     network: "LINEA_MAINNET",
     type: "evm",
   },
@@ -72,7 +72,7 @@ export const networkTokens: Token[] = [
     token: "BSC",
     address: "0xe541504417670FB76b612B41B4392d967a1956c7",
     imageUrl:
-      "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fbsc_mainnet.png&w=48&q=75",
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/bsc_mainnet.png",
     network: "BSC_MAINNET",
     type: "evm",
   },
@@ -200,7 +200,7 @@ export const networkTokens: Token[] = [
     token: "OKT Chain (OKTC)",
     address: "0x6B675A3B5D1177669D7303f3704F26ad8eEe89AC",
     imageUrl:
-      "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fokc_mainnet.png&w=48&q=75",
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/okc_mainnet.png",
     network: "OKC_MAINNET",
     type: "evm",
   },
@@ -216,7 +216,7 @@ export const networkTokens: Token[] = [
     token: "Astar zkEVM",
     address: "0x8d2809308c00e36371CcD805d1a005AB4D20B66d",
     imageUrl:
-      "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fastarzk_mainnet.png&w=48&q=75",
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/astarzk_mainnet.png",
     network: "ASTARZK_MAINNET",
     type: "evm",
   },
@@ -232,7 +232,7 @@ export const networkTokens: Token[] = [
     token: "Redstone",
     address: "0x19a99e5BBFAE5fcF744b3C866b40e36aD15CF656",
     imageUrl:
-      "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fredstone_mainnet.png&w=48&q=75",
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/redstone_mainnet.png",
     network: "REDSTONE_MAINNET",
     type: "evm",
   },
@@ -280,7 +280,7 @@ export const networkTokens: Token[] = [
     token: "Scroll",
     address: "0x3CCa3E01fF2D31C1CACBc347cb1f11274C19D8EE",
     imageUrl:
-      "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fscroll_mainnet.png&w=48&q=75",
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/scroll_mainnet.png",
     network: "SCROLL_MAINNET",
     type: "evm",
   },
@@ -288,7 +288,7 @@ export const networkTokens: Token[] = [
     token: "Gnosis",
     address: "0x6810e776880C02933D47DB1b9fc05908e5386b96",
     imageUrl:
-      "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fgnosis_mainnet.png&w=48&q=75",
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/gnosis_mainnet.png",
     network: "GNOSIS_MAINNET",
     type: "evm",
   },
@@ -296,7 +296,7 @@ export const networkTokens: Token[] = [
     token: "Immutable zkEVM",
     address: "0xb5B2398e74B7D12a426A0a26Ef727F8db6F64A14",
     imageUrl:
-      "https://layerswap.io/app/_next/image?url=https%3A%2F%2Fprodlslayerswapbridgesa.blob.core.windows.net%2Flayerswap%2Fnetworks%2Fimmutablezk_mainnet.png&w=48&q=75",
+      "https://prodlslayerswapbridgesa.blob.core.windows.net/layerswap/networks/immutablezk_mainnet.png",
     network: "IMMUTABLEZK_MAINNET",
     type: "evm",
   },

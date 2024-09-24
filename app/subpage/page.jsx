@@ -349,14 +349,16 @@ const LayerswapAppContent = () => {
                     onClick={toggleFromAssetDropdown}
                   >
                     <p className="flex items-center w-full bg-[#14213d] border-white border border-opacity-5 py-3 px-2 rounded-md text-white text-sm md:text-base opacity-60">
-                    {selectedFromAsset ? selectedFromAsset.display_asset : "Asset"}
-                    <FaChevronDown className="ml-auto text-[15px]" />
+                      {selectedFromAsset
+                        ? selectedFromAsset.display_asset
+                        : "Asset"}
+                      <FaChevronDown className="ml-auto text-[15px]" />
                     </p>
                     {showFromAssetDropdown && (
-                        <TokenAssetsDropdown
-                          assets={fromAssets}
-                          onSelect={handleFromAssetSelect}
-                        />
+                      <TokenAssetsDropdown
+                        assets={fromAssets}
+                        onSelect={handleFromAssetSelect}
+                      />
                     )}
                   </div>
                 </div>
@@ -393,14 +395,14 @@ const LayerswapAppContent = () => {
                     onClick={toggleToAssetDropdown}
                   >
                     <p className="flex items-center w-full bg-[#14213d] border-white border border-opacity-5 py-3 px-2 rounded-md text-white text-sm md:text-base opacity-60">
-                    {selectedToAsset ? selectedToAsset.display : "Asset"}
-                    <FaChevronDown className="ml-auto text-[15px]" />
+                      {selectedToAsset ? selectedToAsset.display : "Asset"}
+                      <FaChevronDown className="ml-auto text-[15px]" />
                     </p>
                     {showToAssetDropdown && (
-                        <TokenAssetsDropdown
-                          assets={toAssets}
-                          onSelect={handleToAssetSelect}
-                        />
+                      <TokenAssetsDropdown
+                        assets={toAssets}
+                        onSelect={handleToAssetSelect}
+                      />
                     )}
                   </div>
                 </div>
@@ -494,15 +496,6 @@ const LayerswapAppContent = () => {
           networkTokens={networkTokens}
           exchangeTokens={exchangeTokens}
         />
-      </div>
-
-      <div style={{ color: "white" }}>
-        {quote
-          ? `Estimated time: ${quote.avgCompletionTime}
-          Fee: ${quote.totalFee} (${quote.totalFeeUSD.toFixed(
-              2
-            )}) You will receive: ${quote.receiveAmount}`
-          : ""}
       </div>
 
       <Footer />
