@@ -17,7 +17,7 @@ const TokenAssetsDropdown = ({ assets, onSelect }) => {
               height={24}
               src={crypto.logo}
               alt={crypto.display_asset}
-              className="w-6 h-6 rounded-full mr-2"
+              className="w-6 h-2 rounded-full mr-2"
             />
             <span className="text-[#7a839e] text-sm">
               {crypto.display_asset}
