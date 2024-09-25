@@ -7,7 +7,7 @@ const TokenAssetsDropdown = ({ assets, onSelect }) => {
       {assets?.map((crypto, index) => (
         <button
           key={crypto.display_asset}
-          className="relative flex items-center justify-center w-full mb-3 last:mb-0 rounded-md p-5 transition-colors duration-200 group"
+          className="relative flex items-center justify-center w-full mb-3 last:mb-0 rounded-md p-2 transition-colors duration-200 group"
           onClick={() => onSelect(crypto)}
         >
           <div className="absolute inset-0 rounded-md group-hover:bg-[#1c2d4a] transition-colors duration-200"></div>
