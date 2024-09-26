@@ -7,7 +7,7 @@ const storage = createStorage({
 });
 
 // Get projectId from https://cloud.reown.com
-export const projectId = "472d6e0ae0ef57b7ae1e61ca90f43c05";
+export const projectId = "fc70813a9fcdde55e7c2aeea86347166";
 
 if (!projectId) {
   throw new Error("Project ID is not defined");

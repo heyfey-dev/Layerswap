@@ -95,7 +95,7 @@ const LayerswapAppContent = () => {
           {
             headers: {
               "X-LS-APIKEY":
-                "NDBxG+aon6WlbgIA2LfwmcbLU52qUL9qTnztTuTRPNSohf/VnxXpRaJlA5uLSQVqP8YGIiy/0mz+mMeZhLY4/Q",
+                "F7oaL1ARVyRoaibpkw8fD7sbNQwHDMg+RshZ1fk2wS7asdyS2PJMJucOUZ72qmlYNVR16ySJSgwpza89uW8FSg",
               Accept: "application/json",
             },
           }
@@ -126,7 +126,7 @@ const LayerswapAppContent = () => {
           {
             headers: {
               "X-LS-APIKEY":
-                "NDBxG+aon6WlbgIA2LfwmcbLU52qUL9qTnztTuTRPNSohf/VnxXpRaJlA5uLSQVqP8YGIiy/0mz+mMeZhLY4/Q",
+                "F7oaL1ARVyRoaibpkw8fD7sbNQwHDMg+RshZ1fk2wS7asdyS2PJMJucOUZ72qmlYNVR16ySJSgwpza89uW8FSg",
               Accept: "application/json",
             },
           }
@@ -174,7 +174,7 @@ const LayerswapAppContent = () => {
         const response = await axios.get(url, {
           headers: {
             "X-LS-APIKEY":
-              "NDBxG+aon6WlbgIA2LfwmcbLU52qUL9qTnztTuTRPNSohf/VnxXpRaJlA5uLSQVqP8YGIiy/0mz+mMeZhLY4/Q",
+              "F7oaL1ARVyRoaibpkw8fD7sbNQwHDMg+RshZ1fk2wS7asdyS2PJMJucOUZ72qmlYNVR16ySJSgwpza89uW8FSg",
             Accept: "application/json",
           },
         });
@@ -220,7 +220,7 @@ const LayerswapAppContent = () => {
       const response = await axios.get(url, {
         headers: {
           "X-LS-APIKEY":
-            "NDBxG+aon6WlbgIA2LfwmcbLU52qUL9qTnztTuTRPNSohf/VnxXpRaJlA5uLSQVqP8YGIiy/0mz+mMeZhLY4/Q",
+            "F7oaL1ARVyRoaibpkw8fD7sbNQwHDMg+RshZ1fk2wS7asdyS2PJMJucOUZ72qmlYNVR16ySJSgwpza89uW8FSg",
           Accept: "application/json",
         },
       });
@@ -395,7 +395,9 @@ const LayerswapAppContent = () => {
                     onClick={toggleToAssetDropdown}
                   >
                     <p className="flex items-center w-full bg-[#14213d] border-white border border-opacity-5 py-3 px-2 rounded-md text-white text-sm md:text-base opacity-60">
-                      {selectedToAsset ? selectedToAsset.display_asset : "Asset"}
+                      {selectedToAsset
+                        ? selectedToAsset.display_asset
+                        : "Asset"}
                       <FaChevronDown className="ml-auto text-[15px]" />
                     </p>
                     {showToAssetDropdown && (
