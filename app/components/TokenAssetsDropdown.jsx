@@ -3,7 +3,7 @@ import React from "react";
 
 const TokenAssetsDropdown = ({ assets, onSelect }) => {
   return (
-    <div className="bg-[#0c1526] border border-white border-opacity-5 absolute right-[1px] top-[54px] md:top-[54px] p-2 rounded-lg w-[150px] animate-slideDown flex flex-col items-center z-50 overflow-y-auto">
+    <div className="bg-[#0c1526] border border-white border-opacity-5 absolute right-[1px] top-[54px] md:top-[54px] p-2 rounded-lg w-[150px] max-h-[100px] animate-slideDown flex flex-col items-center z-50 overflow-y-auto">
       {assets?.map((crypto, index) => (
         <button
           key={crypto.display_asset}
